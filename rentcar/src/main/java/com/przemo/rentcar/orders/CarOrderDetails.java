@@ -1,5 +1,7 @@
 package com.przemo.rentcar.orders;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.przemo.rentcar.cars.Car;
 
 import javax.persistence.*;
@@ -22,9 +24,11 @@ public class CarOrderDetails
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "id")
+    @JsonBackReference
     private CarOrder carOrder;
 
     @OneToOne(mappedBy="carOrderDetails")
+    //@JsonBackReference
     private Car car;
 
     public Long getCarOrderDetail_id() {

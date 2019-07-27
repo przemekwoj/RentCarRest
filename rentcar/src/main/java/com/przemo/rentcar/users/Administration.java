@@ -1,5 +1,7 @@
 package com.przemo.rentcar.users;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.przemo.rentcar.orders.CarOrder;
 
 import javax.persistence.*;
@@ -12,8 +14,9 @@ import java.util.Set;
 @DiscriminatorColumn(name="role")
 public class Administration extends User
 {
-    @OneToMany(mappedBy = "stuff",
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "stuff",
             orphanRemoval = true)
+    @JsonBackReference
     private Set<CarOrder> carOrders = new HashSet<>();
 
     public Set<CarOrder> getCarOrders() {

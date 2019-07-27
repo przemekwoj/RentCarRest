@@ -3,10 +3,12 @@ package com.przemo.rentcar.controllers;
 import com.przemo.rentcar.cars.Brand;
 import com.przemo.rentcar.cars.Car;
 import com.przemo.rentcar.cars.CarDetails;
-import com.przemo.rentcar.repositoriesDB.BrandRepository;
-import com.przemo.rentcar.repositoriesDB.CarDetailsRepository;
-import com.przemo.rentcar.repositoriesDB.CarRepository;
+import com.przemo.rentcar.repositoriesDB.*;
 import com.przemo.rentcar.services.CarService;
+import com.przemo.rentcar.users.Administration;
+import com.przemo.rentcar.users.Employee;
+import com.przemo.rentcar.users.Supervisor;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,23 +40,35 @@ public class TestController
     @Autowired
     private CarService carService;
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private SupervisorRepository supervisorRepository;
+
+    @Autowired
+    private AdministrationRepository administrationRepository;
+
 
     @GetMapping("/test")
     public String test()
     {
+        Employee e = new Employee();
+        e.setFirstName("asdasd");
+        employeeRepository.save(e);
+
+        Supervisor s = new Supervisor();
+        s.setFirstName("aa");
+        supervisorRepository.save(s);
+
+        Employee e2 = new Employee();
+        e2.setFirstName("admin");
+        administrationRepository.save(e2);
 
         return "dziaslaAAAssqweqwe";
     }
 
 
-    @GetMapping("/test1")
-    public Car test1()
-    {
-        CarDetails cd = carDetailsRepository.findById(1L).get();
-        System.out.println(cd.toString());
-        cd.getCar();
-        System.out.println(cd.toString());
-        return cd.getCar();
-    }
+
 
 }

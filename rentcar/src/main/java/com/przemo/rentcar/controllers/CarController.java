@@ -55,9 +55,18 @@ public class CarController
         return "car updated";
     }
 
-    @GetMapping("/carDetail/{id}")
-    public CarDetails getCarDetailById(@PathVariable Long id)
+    @GetMapping("/carDetail/{carId}")
+    public CarDetails getCarDetailById(@PathVariable Long carId)
     {
-        return carService.getCarDetailById(id);
+        return carService.getCarDetailById(carId);
+    }
+
+    @PutMapping("carDetail/{carId}")
+    public CarDetails updateCarDetail(@RequestBody CarDetails carDetails,@PathVariable Long carId)
+    {
+        carService.updateCarDetail(carDetails,carId);
+
+        System.out.println("heheasdasd");
+        return carDetails;
     }
 }

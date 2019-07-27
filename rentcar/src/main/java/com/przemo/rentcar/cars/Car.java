@@ -8,6 +8,7 @@ import org.hibernate.annotations.LazyToOneOption;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 public class Car
@@ -28,6 +29,7 @@ public class Car
 
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "carOrderDetail_id")
+    @JsonBackReference
     private CarOrderDetails carOrderDetails;
 
     public Car(){}

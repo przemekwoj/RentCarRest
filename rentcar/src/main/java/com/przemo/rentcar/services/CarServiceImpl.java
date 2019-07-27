@@ -43,6 +43,20 @@ public class CarServiceImpl implements CarService
     }
 
     @Override
+    public CarDetails updateCarDetail(CarDetails carDetails, Long carId)
+    {
+        Car car = carRepository.getCarById(carId).get();
+
+        carDetails.setCarDetails_id(carId);
+
+        car.setCarDetails(carDetails);
+
+        carRepository.save(car);
+
+        return carDetails;
+    }
+
+    @Override
     public CarDetails getCarDetailById(Long id) {
         CarDetails carDetails = carDetailsRepository.findById(id).get();
         carDetails.setCar(null);

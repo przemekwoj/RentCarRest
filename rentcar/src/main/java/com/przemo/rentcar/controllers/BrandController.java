@@ -31,15 +31,7 @@ public class BrandController
     @GetMapping("/withCars")
     public List<Brand> getAllBrandsWithCars()
     {
-        List<Brand> brands = brandService.getAllBrandsWithCars();
-        for(Brand b:brands)
-        {
-            for(Car c: b.getCars())
-            {
-                System.out.println(c.getCarDetails());
-            }
-        }
-        return brands;
+        return brandService.getAllBrandsWithCars();
     }
 
     @PostMapping("/brand")

@@ -31,7 +31,15 @@ public class BrandServiceImpl implements BrandService
     @Override
     public List<Brand> getAllBrandsWithCars()
     {
-        return brandRepository.findAll();
+        List<Brand> brands =  brandRepository.findAll();
+        for(Brand b:brands)
+        {
+            for(Car c: b.getCars())
+            {
+                System.out.println(c.getCarDetails());
+            }
+        }
+        return brands;
     }
 
     @Override
