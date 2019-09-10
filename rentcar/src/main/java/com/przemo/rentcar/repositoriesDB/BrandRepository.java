@@ -17,4 +17,5 @@ public interface BrandRepository extends JpaRepository<Brand,Long>
             "WHERE b.brand_id = :id")
     Optional<Brand> getBrandById(@Param("id") Long id);
 
+
 }

@@ -1,13 +1,16 @@
 package com.przemo.rentcar.orders;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.przemo.rentcar.cars.Car;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class CarOrderDetails
 {
     @Id
@@ -21,61 +24,14 @@ public class CarOrderDetails
     @Temporal(TemporalType.DATE)
     private Date dateOfReturn;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "id")
     @JsonBackReference
     private CarOrder carOrder;
 
-    @OneToOne(mappedBy="carOrderDetails")
-    //@JsonBackReference
+    @OneToOne( cascade = CascadeType.MERGE)
+    @JoinColumn(name = "car_id")
     private Car car;
 
-    public Long getCarOrderDetail_id() {
-        return carOrderDetail_id;
-    }
-
-    public void setCarOrderDetail_id(Long carOrderDetail_id) {
-        this.carOrderDetail_id = carOrderDetail_id;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public Date getDateOfRental() {
-        return dateOfRental;
-    }
-
-    public void setDateOfRental(Date dateOfRental) {
-        this.dateOfRental = dateOfRental;
-    }
-
-    public Date getDateOfReturn() {
-        return dateOfReturn;
-    }
-
-    public void setDateOfReturn(Date dateOfReturn) {
-        this.dateOfReturn = dateOfReturn;
-    }
-
-    public CarOrder getCarOrder() {
-        return carOrder;
-    }
-
-    public void setCarOrder(CarOrder carOrder) {
-        this.carOrder = carOrder;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
 }

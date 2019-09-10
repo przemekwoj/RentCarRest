@@ -21,18 +21,23 @@ public class AdministrationServiceImpl implements AdministrationService
     @Autowired
     private SupervisorRepository supervisorRepository;
 
+    @Autowired
+    private AdministrationRepository administrationRepository;
+
     @Override
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
     @Override
+    public Optional<Administration> findByEmail(String email) {
+        return administrationRepository.findByEmail(email);
+    }
+
+    @Override
     public List<Supervisor> getAllSupervisors() {
         return supervisorRepository.findAll();
     }
-
-    @Autowired
-    private AdministrationRepository administrationRepository;
 
     @Override
     public List<Administration> getAllAdministrations() {

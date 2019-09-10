@@ -1,14 +1,9 @@
 package com.przemo.rentcar.cars;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.przemo.rentcar.orders.CarOrderDetails;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
-
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 public class Car
@@ -21,22 +16,20 @@ public class Car
     private boolean available;
 
     @Column(unique = true)
-    private String plateNumer;
+    private String plateNumber;
 
     @OneToOne(mappedBy = "car",cascade = CascadeType.ALL)
-    //@JsonBackReference
     private CarDetails carDetails;
 
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "carOrderDetail_id")
+    @OneToOne(mappedBy="car" ,cascade = {CascadeType.REMOVE,CascadeType.MERGE})
     @JsonBackReference
     private CarOrderDetails carOrderDetails;
 
     public Car(){}
 
-    public Car(Long car_id,String plateNumer,boolean available) {
+    public Car(Long car_id,String plateNumber,boolean available) {
         this.available = available;
-        this.plateNumer = plateNumer;
+        this.plateNumber = plateNumber;
         this.car_id = car_id;
     }
 
@@ -56,12 +49,12 @@ public class Car
         this.available = available;
     }
 
-    public String getPlateNumer() {
-        return plateNumer;
+    public String getPlateNumber() {
+        return plateNumber;
     }
 
-    public void setPlateNumer(String plateNumer) {
-        this.plateNumer = plateNumer;
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
     }
 
     public CarDetails getCarDetails() {
@@ -85,7 +78,7 @@ public class Car
         return "Car{" +
                 "car_id=" + car_id +
                 ", available=" + available +
-                ", plateNumer='" + plateNumer + '\'' +
+                ", plateNumer='" + plateNumber + '\'' +
                 ", carDetails=" + carDetails +
                 ", carOrderDetails=" + carOrderDetails +
                 '}';

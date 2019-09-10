@@ -7,10 +7,8 @@ import com.przemo.rentcar.repositoriesDB.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class BrandServiceImpl implements BrandService
@@ -20,6 +18,15 @@ public class BrandServiceImpl implements BrandService
 
     @Autowired
     private CarRepository carRepository;
+
+    @Override
+    public void addCarToBrand(long brandId, String plateNumber) {
+        Brand brand = brandRepository.findById(brandId).orElseThrow(() -> new RuntimeException());
+        Car car = carRepository.findByPlateNumber(plateNumber).get();
+        brand.addCar(car);
+        brandRepository.save(brand);
+    }
+
 
     @Override
     public List<Brand> getAllBrands()

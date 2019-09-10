@@ -1,9 +1,6 @@
 package com.przemo.rentcar.controllers;
 
 import com.przemo.rentcar.cars.Brand;
-import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.repositoriesDB.BrandRepository;
-import com.przemo.rentcar.repositoriesDB.CarRepository;
 import com.przemo.rentcar.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +50,12 @@ public class BrandController
     {
         brandService.updateBrand(updatedBrand);
         return "brand updated";
+    }
+
+    @PatchMapping("/brandId/{brandId}/plateNumber/{plateNumber}")
+    public String addCarToBrand(@PathVariable long brandId,@PathVariable String plateNumber)
+    {
+        brandService.addCarToBrand(brandId,plateNumber);
+        return  "carAddedToBrand";
     }
 }

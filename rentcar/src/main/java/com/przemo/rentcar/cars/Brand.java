@@ -1,10 +1,5 @@
 package com.przemo.rentcar.cars;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
@@ -25,7 +20,7 @@ public class Brand
 
     private int amountOfAvailableCars;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     private Set<Car> cars = new HashSet<>();
 
@@ -41,6 +36,8 @@ public class Brand
     public void addCar(Car car)
     {
         cars.add(car);
+        amountOfAvailableCars++;
+        amountOfCars++;
     }
 
     public Long getBrand_id() {

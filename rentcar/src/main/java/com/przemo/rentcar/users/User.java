@@ -1,10 +1,22 @@
 package com.przemo.rentcar.users;
 
-import javax.persistence.*;
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class User
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+public abstract class  User
 {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -13,11 +25,7 @@ public abstract class User
     private String lastName;
     private String email;
     private String phone;
-
-    public User()
-    {
-        
-    }
+    private String password;
 
     public User(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
@@ -26,60 +34,9 @@ public abstract class User
         this.phone = phone;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public void setPassword(String password) {
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt(10));
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(user_id, user.user_id) &&
-                firstName.equals(user.firstName) &&
-                lastName.equals(user.lastName) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(phone, user.phone);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(user_id, firstName, lastName, email, phone);
-    }
 }

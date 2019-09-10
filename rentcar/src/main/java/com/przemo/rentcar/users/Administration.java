@@ -1,8 +1,9 @@
 package com.przemo.rentcar.users;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.przemo.rentcar.orders.CarOrder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,13 +18,8 @@ public class Administration extends User
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "stuff",
             orphanRemoval = true)
     @JsonBackReference
+    @Setter
+    @Getter
     private Set<CarOrder> carOrders = new HashSet<>();
 
-    public Set<CarOrder> getCarOrders() {
-        return carOrders;
-    }
-
-    public void setCarOrders(Set<CarOrder> carOrders) {
-        this.carOrders = carOrders;
-    }
 }

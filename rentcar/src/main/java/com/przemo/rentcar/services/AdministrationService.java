@@ -27,6 +27,6 @@ public interface AdministrationService
 
     void deleteAdministrator(Long id);
 
-
+    Optional<Administration> findByEmail(String email);
 
 }

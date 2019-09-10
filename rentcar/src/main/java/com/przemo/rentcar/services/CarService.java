@@ -2,9 +2,6 @@ package com.przemo.rentcar.services;
 
 import com.przemo.rentcar.cars.Car;
 import com.przemo.rentcar.cars.CarDetails;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,11 +15,13 @@ public interface CarService
 
     List<Car> getAllCars();
 
-    Optional<Car> getCarById(Long Id);
+    Optional<Car> getCarByIdLazy(Long Id);
 
     Car persistCar(Car car);
 
     CarDetails getCarDetailById(Long id);
 
     CarDetails updateCarDetail( CarDetails carDetails,  Long carId);
+
+    Car addNewCarWithBrand(Car car, long brandId);
 }

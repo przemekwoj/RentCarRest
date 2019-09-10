@@ -1,0 +1,28 @@
+<p>
+  post-car works!
+</p>
+
+
+<form [formGroup]="newCar" (ngSubmit)="createCar()">
+  
+  <label>
+    plateNumber:
+    <input type="text" formControlName="plateNumber">
+  </label>
+
+  <label>
+    available:
+    <input type="checkbox" formControlName="available" checked>
+  </label>
+
+  <select formControlName="brandId">
+    <option *ngFor="let brand of brands; let i = index" [value]="brand.brand_id">{{brand.brandName}}</option>  
+  </select>
+  <button type="submit" [disabled]="!newCar.valid">Submit</button>
+</form>
+
+
+
+
+
+

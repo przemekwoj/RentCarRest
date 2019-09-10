@@ -1,7 +1,9 @@
 package com.przemo.rentcar.services;
 
+import com.przemo.rentcar.cars.Brand;
 import com.przemo.rentcar.cars.Car;
 import com.przemo.rentcar.cars.CarDetails;
+import com.przemo.rentcar.repositoriesDB.BrandRepository;
 import com.przemo.rentcar.repositoriesDB.CarDetailsRepository;
 import com.przemo.rentcar.repositoriesDB.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class CarServiceImpl implements CarService
     private CarRepository carRepository;
 
     @Autowired
+    private BrandRepository brandRepository;
+
+    @Autowired
     private CarDetailsRepository carDetailsRepository;
 
     @Override
@@ -26,13 +31,22 @@ public class CarServiceImpl implements CarService
     }
 
     @Override
-    public Optional<Car> getCarById(Long Id) {
-        return carRepository.getCarById(Id);
+    public Optional<Car> getCarByIdLazy(Long Id) {
+        return carRepository.getCarByIdLazy(Id);
     }
 
     @Override
     public Car persistCar(Car car) {
         return  carRepository.save(car);
+    }
+
+    @Override
+    public Car addNewCarWithBrand(Car car, long brandId) {
+        Brand brand = brandRepository.findById(brandId).get();
+        brand.addCar(car);
+        carRepository.save(car);
+        brandRepository.save(brand);
+        return car;
     }
 
     @Override
@@ -45,7 +59,7 @@ public class CarServiceImpl implements CarService
     @Override
     public CarDetails updateCarDetail(CarDetails carDetails, Long carId)
     {
-        Car car = carRepository.getCarById(carId).get();
+        Car car = carRepository.getCarByIdLazy(carId).get();
 
         carDetails.setCarDetails_id(carId);
 
