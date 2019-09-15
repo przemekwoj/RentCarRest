@@ -1,8 +1,12 @@
 package com.przemo.rentcar.controllers;
 
 import com.przemo.rentcar.cars.Car;
+import com.przemo.rentcar.cars.CarDTO;
 import com.przemo.rentcar.cars.CarDetails;
+import com.przemo.rentcar.cars.CarDetailsDTO;
 import com.przemo.rentcar.services.CarService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +22,21 @@ public class CarController
     @Autowired
     private CarService carService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @GetMapping("/cars")
-    public List<Car> getAllCars()
+    public List<CarDTO> getAllCars()
     {
-     return carService.getAllCars();
+        List<CarDTO> carsDTO = modelMapper.map(carService.getAllCars(), new TypeToken<List<CarDTO>>(){}.getType());
+        return carsDTO;
     }
 
     @GetMapping("/{carId}")
-    public Car getCarById(@PathVariable Long carId)
+    public CarDTO getCarById(@PathVariable Long carId)
     {
         Car car = carService.getCarByIdLazy(carId).get(); /// dodac wyjatek tutaj bo Optional typ
-        return car;
+        return modelMapper.map(car,CarDTO.class);
     }
 
     @PostMapping("/carWithBrand/{brandId}")
@@ -59,9 +67,10 @@ public class CarController
     }
 
     @GetMapping("/carDetail/{carId}")
-    public CarDetails getCarDetailById(@PathVariable Long carId)
+    public CarDetailsDTO getCarDetailById(@PathVariable Long carId)
     {
-        return carService.getCarDetailById(carId);
+        CarDetails carDetails = carService.getCarDetailById(carId);
+        return modelMapper.map(carDetails,CarDetailsDTO.class);
     }
 
     @PutMapping("carDetail/{carId}")

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../services/config.service';
+import { CarRepository } from '../services/CarRepository';
 import { Car } from '../car';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { BrandRepository } from '../services/BrandRepository';
 
 
 @Component({
@@ -21,10 +22,10 @@ export class PostCarComponent implements OnInit {
     brandId: new FormControl(''),
   });
 
-  constructor(private data: ConfigService) {
-    this.data.getBrands().subscribe(data => {
-      this.brands = data;
-      console.log(data);
+  constructor(private carRepository: CarRepository, private brandRepository: BrandRepository) {
+    this.brandRepository.getBrands().subscribe(brand => {
+      this.brands = brand;
+      console.log(brand);
     });
   }
 
@@ -33,17 +34,17 @@ export class PostCarComponent implements OnInit {
   }
 
   async createCar() {
-    //let 
     this.car.available = this.newCar.value.available;
     this.car.plateNumber = this.newCar.value.plateNumber;
     this.brandId = this.newCar.value.brandId;
-    /*console.log('before post');
-    this.data.postCar(this.car).subscribe(c => { console.log(c); } );
-    console.log('after post');*/
-    this.data.postCarWithrand(this.car, this.brandId).subscribe(c => { console.log(c); });
+    this.carRepository.postCarWithbrand(this.car, this.brandId).subscribe(c => { console.log(c); });
     //wait till save car in DB
     // await this.delay(500);
-    //this.data.addCarToBrand(this.newCar.value.plateNumber, this.newCar.value.brandId).subscribe();
+    this.newCar.reset({
+      plateNumber: '',
+      available: '',
+      brandId: '',
+    });
   }
 
 

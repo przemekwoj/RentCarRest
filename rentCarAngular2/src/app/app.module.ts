@@ -10,6 +10,8 @@ import { PostCarComponent } from './post-car/post-car.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrandComponent } from './brand/brand.component';
+import { CarDetailsComponent } from './car-details/car-details.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ManageComponent,
     GetCarsComponent,
     PostCarComponent,
+    BrandComponent,
+    CarDetailsComponent,
   ],
   imports: [
     BrowserModule,

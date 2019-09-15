@@ -43,8 +43,10 @@ public class CarServiceImpl implements CarService
     @Override
     public Car addNewCarWithBrand(Car car, long brandId) {
         Brand brand = brandRepository.findById(brandId).get();
+        CarDetails carDetails = new CarDetails();
+        carDetails.setCar(car);
         brand.addCar(car);
-        carRepository.save(car);
+        carDetailsRepository.save(carDetails);
         brandRepository.save(brand);
         return car;
     }

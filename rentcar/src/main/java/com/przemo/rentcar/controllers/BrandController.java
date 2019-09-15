@@ -1,7 +1,10 @@
 package com.przemo.rentcar.controllers;
 
 import com.przemo.rentcar.cars.Brand;
+import com.przemo.rentcar.cars.BrandDTO;
 import com.przemo.rentcar.services.BrandService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,19 +19,26 @@ public class BrandController
     @Autowired
     private BrandService brandService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @GetMapping("/brands")
-    public List<Brand> getAllBrands()
+    public List<BrandDTO> getAllBrands()
     {
-        return brandService.getAllBrands();
+        List<Brand> brands = brandService.getAllBrands();
+        return  modelMapper.map(brands, new TypeToken<List<BrandDTO>>(){}.getType());
     }
 
     @GetMapping("/{brandId}")
-    public Brand getBrandById(@PathVariable Long brandId) { return brandService.getBrandById(brandId).get(); }
+    public BrandDTO getBrandById(@PathVariable Long brandId) {
+        Brand brand = brandService.getBrandById(brandId).get();
+        return modelMapper.map(brand,BrandDTO.class);}
 
     @GetMapping("/withCars")
-    public List<Brand> getAllBrandsWithCars()
+    public List<BrandDTO> getAllBrandsWithCars()
     {
-        return brandService.getAllBrandsWithCars();
+        List<Brand> brands = brandService.getAllBrandsWithCars();
+        return  modelMapper.map(brands, new TypeToken<List<BrandDTO>>(){}.getType());
     }
 
     @PostMapping("/brand")

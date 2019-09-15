@@ -20,6 +20,11 @@ export class AppComponent {
     console.log('post');
     window.location.replace('manage/postCar');
   }
+
+  createBrand() {
+    window.location.replace('manage/createBrand');
+  }
+
   next() {
     console.log('next');
     console.log(this.router.url);

@@ -4,11 +4,12 @@ import { Car } from '../car';
 import { post } from 'selenium-webdriver/http';
 import { Observable } from 'rxjs';
 import { ReturnStatement } from '@angular/compiler';
+import { CarDetails } from '../carDetails';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ConfigService {
+export class CarRepository {
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +21,7 @@ export class ConfigService {
     return this.http.post<Car>('http://localhost:8080/car/car', car);
   }
 
-  postCarWithrand(car: Car, brandId: number): Observable<any> {
+  postCarWithbrand(car: Car, brandId: number): Observable<any> {
     const url = 'http://localhost:8080/car/carWithBrand/' + brandId;
     return this.http.post<Car>(url, car);
 
@@ -33,6 +34,17 @@ export class ConfigService {
   addCarToBrand(plateNumber: string, brandId: number) {
     let url = 'http://localhost:8080/brand/brandId/' + brandId + '/plateNumber/' + plateNumber;
     return this.http.patch(url, null);
+  }
+
+  getCarDetail(carId: number){
+    let url = 'http://localhost:8080/car/carDetail/' + carId;
+    return this.http.get(url);
+
+  }
+
+  putCarDetails(carDetail: CarDetails, carId: number): Observable<CarDetails>  {
+    let url = 'http://localhost:8080/car/carDetail/' + carId;
+    return this.http.put<CarDetails>(url, carDetail);
   }
 
 }

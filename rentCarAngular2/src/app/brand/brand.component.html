@@ -1,0 +1,12 @@
+<p>
+  brand works!
+</p>
+<form [formGroup]="newBrand" (ngSubmit)="createBrand()">
+  
+  <label>
+    Brand Name:
+    <input type="text" formControlName="brandName">
+  </label>
+
+  <button type="submit" [disabled]="!newBrand.valid">Submit</button>
+</form>

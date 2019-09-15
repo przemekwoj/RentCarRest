@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../services/config.service';
+import { CarRepository } from '../services/CarRepository';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-cars',
@@ -9,14 +10,21 @@ import { ConfigService } from '../services/config.service';
 export class GetCarsComponent implements OnInit {
 
   cars: object;
+  carId: number;
 
-  constructor(private data: ConfigService) { }
+  constructor(private carRepository: CarRepository, private router: Router) { }
 
   ngOnInit() {
-    this.data.getCars().subscribe(data => {
-      this.cars = data;
-      console.log(data);
+    this.carRepository.getCars().subscribe(cars => {
+      this.cars = cars;
+      console.log(cars);
     });
+  }
+
+  carDetail(id: number) {
+    this.carId = id;
+    console.log(this.carId);
+    this.router.navigateByUrl('manage/carDetailView/' + this.carId);
   }
 
 }

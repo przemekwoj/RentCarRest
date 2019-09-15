@@ -2,5 +2,5 @@
   get-cars works!
 </p>
 <li *ngFor="let car of cars; let i = index">
-  id: {{cars[i].car_id}}  plateNumber: {{cars[i].plateNumber}} <button (click)="details()">Click me!</button>
+  id: {{cars[i].car_id}}  plateNumber: {{cars[i].plateNumber}} <button (click)="carDetail(car.car_id)">Car Details</button>
 </li>

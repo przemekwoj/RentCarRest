@@ -1,0 +1,27 @@
+<p>
+  car-details works!
+</p>
+
+<form [formGroup]="newCarDetails" (ngSubmit)="createNewCarDetails()">
+  
+  <label>
+    color:
+    <input type="text" formControlName="color">
+  </label>
+  <br>
+
+  <label>
+    weight:
+    <input type="number" formControlName="weight">
+  </label>
+  <br>
+
+  <label>
+    hight:
+    <input type="number" formControlName="hight">
+  </label>
+  <br>
+
+  <button type="submit" [disabled]="!newCarDetails.valid">Submit</button>
+</form>
+<button id='btnEdit' (click)="enableEdit()" [hidden]="ishidden"   >{{btn}}</button>

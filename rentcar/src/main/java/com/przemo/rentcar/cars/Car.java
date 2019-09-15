@@ -2,10 +2,16 @@ package com.przemo.rentcar.cars;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.przemo.rentcar.orders.CarOrderDetails;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Car
 {
 
@@ -25,7 +31,6 @@ public class Car
     @JsonBackReference
     private CarOrderDetails carOrderDetails;
 
-    public Car(){}
 
     public Car(Long car_id,String plateNumber,boolean available) {
         this.available = available;
@@ -33,54 +38,4 @@ public class Car
         this.car_id = car_id;
     }
 
-    public Long getCar_id() {
-        return car_id;
-    }
-
-    public void setCar_id(Long car_id) {
-        this.car_id = car_id;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public String getPlateNumber() {
-        return plateNumber;
-    }
-
-    public void setPlateNumber(String plateNumber) {
-        this.plateNumber = plateNumber;
-    }
-
-    public CarDetails getCarDetails() {
-        return carDetails;
-    }
-
-    public void setCarDetails(CarDetails carDetails) {
-        this.carDetails = carDetails;
-    }
-
-    public CarOrderDetails getCarOrderDetails() {
-        return carOrderDetails;
-    }
-
-    public void setCarOrderDetails(CarOrderDetails carOrderDetails) {
-        this.carOrderDetails = carOrderDetails;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "car_id=" + car_id +
-                ", available=" + available +
-                ", plateNumer='" + plateNumber + '\'' +
-                ", carDetails=" + carDetails +
-                ", carOrderDetails=" + carOrderDetails +
-                '}';
-    }
 }
