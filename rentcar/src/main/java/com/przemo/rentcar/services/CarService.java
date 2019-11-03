@@ -15,6 +15,8 @@ public interface CarService
 
     List<Car> getAllCars();
 
+    List<Car> getAvailableCars();
+
     Optional<Car> getCarByIdLazy(Long Id);
 
     Car persistCar(Car car);
@@ -24,4 +26,5 @@ public interface CarService
     CarDetails updateCarDetail( CarDetails carDetails,  Long carId);
 
     Car addNewCarWithBrand(Car car, long brandId);
+
 }

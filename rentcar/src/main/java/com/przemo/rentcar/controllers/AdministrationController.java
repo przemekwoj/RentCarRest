@@ -15,8 +15,12 @@ import java.util.List;
 @RequestMapping("/administration")
 public class AdministrationController
 {
+    private final AdministrationService administrationService;
+
     @Autowired
-    private AdministrationService administrationService;
+    public AdministrationController(AdministrationService administrationService) {
+        this.administrationService = administrationService;
+    }
 
     @GetMapping("administrations")
     public List<Administration> getAllAdministrations()
@@ -30,10 +34,16 @@ public class AdministrationController
         return administrationService.getAdministrationById(id).get();
     }
 
-    @GetMapping("employees")
+    @GetMapping("/employees")
     public List<Employee> getAllEmplyees()
     {
         return administrationService.getAllEmployees();
+    }
+
+    @GetMapping("/getIdByMail/{email}")
+    public Administration getIdBYMail(@PathVariable String email)
+    {
+        return administrationService.getAdministrationByEmail(email).get();
     }
 
     @GetMapping("supervisor")

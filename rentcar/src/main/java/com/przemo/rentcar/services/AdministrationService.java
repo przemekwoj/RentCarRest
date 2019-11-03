@@ -29,4 +29,7 @@ public interface AdministrationService
 
     Optional<Administration> findByEmail(String email);
 
+    Optional<Administration> getAdministrationByEmail(String email);
+
+
 }

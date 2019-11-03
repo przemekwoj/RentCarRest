@@ -30,6 +30,11 @@ public class AdministrationServiceImpl implements AdministrationService
     }
 
     @Override
+    public Optional<Administration> getAdministrationByEmail(String email) {
+        return administrationRepository.getAdministrationByEmail(email);
+    }
+
+    @Override
     public Optional<Administration> findByEmail(String email) {
         return administrationRepository.findByEmail(email);
     }

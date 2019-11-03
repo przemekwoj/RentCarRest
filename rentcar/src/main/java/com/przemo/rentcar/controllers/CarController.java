@@ -19,16 +19,27 @@ import java.util.List;
 public class CarController
 {
 
-    @Autowired
-    private CarService carService;
+    private final CarService carService;
+
+    private final ModelMapper modelMapper;
 
     @Autowired
-    private ModelMapper modelMapper;
+    public CarController(CarService carService, ModelMapper modelMapper) {
+        this.carService = carService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/cars")
     public List<CarDTO> getAllCars()
     {
         List<CarDTO> carsDTO = modelMapper.map(carService.getAllCars(), new TypeToken<List<CarDTO>>(){}.getType());
+        return carsDTO;
+    }
+
+    @GetMapping("/AvailableCars")
+    public List<CarDTO> getAvailableCars()
+    {
+        List<CarDTO> carsDTO = modelMapper.map(carService.getAvailableCars(), new TypeToken<List<CarDTO>>(){}.getType());
         return carsDTO;
     }
 

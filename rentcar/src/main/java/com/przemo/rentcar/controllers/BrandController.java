@@ -16,11 +16,16 @@ import java.util.List;
 @RequestMapping("/brand")
 public class BrandController
 {
-    @Autowired
-    private BrandService brandService;
+
+    private final BrandService brandService;
+
+    private final ModelMapper modelMapper;
 
     @Autowired
-    private ModelMapper modelMapper;
+    public BrandController(BrandService brandService, ModelMapper modelMapper) {
+        this.brandService = brandService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/brands")
     public List<BrandDTO> getAllBrands()

@@ -1,6 +1,7 @@
 package com.przemo.rentcar.repositoriesDB;
 
 import com.przemo.rentcar.cars.Brand;
+import com.przemo.rentcar.repositoriesDB.queries.BrandQueries;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,11 +11,10 @@ import java.util.Optional;
 
 public interface BrandRepository extends JpaRepository<Brand,Long>
 {
-    @Query("SELECT NEW Brand (b.brandName,b.amountOfCars,b.amountOfAvailableCars,b.brand_id)FROM Brand b")
+    @Query(BrandQueries.getAllBrands)
     List<Brand> getAllBrands();
 
-    @Query("SELECT NEW Brand (b.brandName,b.amountOfCars,b.amountOfAvailableCars,b.brand_id)FROM Brand b " +
-            "WHERE b.brand_id = :id")
+    @Query(BrandQueries.getBrandById)
     Optional<Brand> getBrandById(@Param("id") Long id);
 
 

@@ -1,19 +1,14 @@
 package com.przemo.rentcar.controllers;
 
-import com.przemo.rentcar.cars.Brand;
 import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.cars.CarDetails;
 import com.przemo.rentcar.orders.CarOrder;
 import com.przemo.rentcar.orders.CarOrderDetails;
 import com.przemo.rentcar.repositoriesDB.*;
-import com.przemo.rentcar.services.CarOrderService;
 import com.przemo.rentcar.services.CarService;
 import com.przemo.rentcar.services.ClientService;
-import com.przemo.rentcar.users.Administration;
 import com.przemo.rentcar.users.Client;
 import com.przemo.rentcar.users.Employee;
 import com.przemo.rentcar.users.Supervisor;
-import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -123,6 +118,31 @@ public class TestController
 
 
         return "test";
+    }
+
+    @GetMapping("/test3")
+    public String test3()
+    {
+        Employee employee = new Employee();
+        Supervisor supervisor = new Supervisor();
+
+        employee.setFirstName("ad");
+        employee.setEmail("e@wp.pl");
+        employee.setPassword("e");
+
+        administrationRepository.save(employee);
+
+        supervisor.setEmail("s@wp.pl");
+        supervisor.setPassword("s");
+
+        administrationRepository.save(supervisor);
+        return  "test3";
+    }
+
+    @GetMapping("/test4")
+    public String test4()
+    {
+       return "asd";
     }
 
 

@@ -41,6 +41,11 @@ public class CarServiceImpl implements CarService
     }
 
     @Override
+    public List<Car> getAvailableCars() {
+         return carRepository.findByAvailableTrue();
+    }
+
+    @Override
     public Car addNewCarWithBrand(Car car, long brandId) {
         Brand brand = brandRepository.findById(brandId).get();
         CarDetails carDetails = new CarDetails();

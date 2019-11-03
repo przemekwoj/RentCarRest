@@ -24,6 +24,8 @@ public class CarOrderDetails
     @Temporal(TemporalType.DATE)
     private Date dateOfReturn;
 
+    private boolean isDetained;
+
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "id")
