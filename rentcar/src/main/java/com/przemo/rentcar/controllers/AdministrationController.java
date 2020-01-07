@@ -1,10 +1,11 @@
 package com.przemo.rentcar.controllers;
 
 import com.przemo.rentcar.services.AdministrationService;
-import com.przemo.rentcar.users.Administration;
-import com.przemo.rentcar.users.Employee;
-import com.przemo.rentcar.users.Supervisor;
+import com.przemo.rentcar.entities.users.Administration;
+import com.przemo.rentcar.entities.users.Employee;
+import com.przemo.rentcar.entities.users.Supervisor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -31,7 +32,7 @@ public class AdministrationController
     @GetMapping("/{id}")
     public Administration getAdministratorById(@PathVariable Long id)
     {
-        return administrationService.getAdministrationById(id).get();
+        return administrationService.getAdministrationById(id);
     }
 
     @GetMapping("/employees")
@@ -40,10 +41,10 @@ public class AdministrationController
         return administrationService.getAllEmployees();
     }
 
-    @GetMapping("/getIdByMail/{email}")
+    @GetMapping("/getAdministationByMail/{email}")
     public Administration getIdBYMail(@PathVariable String email)
     {
-        return administrationService.getAdministrationByEmail(email).get();
+        return administrationService.getAdministrationByEmail(email);
     }
 
     @GetMapping("supervisor")
@@ -53,25 +54,25 @@ public class AdministrationController
     }
 
     @PutMapping("/employee/{id}")
-    public Employee updateEmployee(@RequestBody Employee employee,@PathVariable Long id)
+    public Employee updateEmployee(@Validated @RequestBody Employee employee,@PathVariable Long id)
     {
         return administrationService.updateEmployee(employee,id);
     }
 
     @PutMapping("/supervisor/{id}")
-    public Supervisor updateSupervisor(@RequestBody Supervisor supervisor,@PathVariable Long id)
+    public Supervisor updateSupervisor(@Validated  @RequestBody Supervisor supervisor,@PathVariable Long id)
     {
         return administrationService.updateSupervisor(supervisor,id);
     }
 
     @PostMapping("/employee")
-    public Employee addEmployee(@RequestBody Employee employee)
+    public Employee addEmployee(@Validated @RequestBody Employee employee)
     {
         return administrationService.addEmployee(employee);
     }
 
     @PostMapping("/supervisor")
-    public Supervisor addSupervisor(@RequestBody Supervisor supervisor)
+    public Supervisor addSupervisor(@Validated @RequestBody Supervisor supervisor)
     {
         return  administrationService.addSupervisor(supervisor);
     }

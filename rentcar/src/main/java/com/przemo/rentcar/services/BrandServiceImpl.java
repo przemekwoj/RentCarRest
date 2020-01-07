@@ -1,14 +1,13 @@
 package com.przemo.rentcar.services;
 
-import com.przemo.rentcar.cars.Brand;
-import com.przemo.rentcar.cars.Car;
+import com.przemo.rentcar.entities.cars.Brand;
+import com.przemo.rentcar.entities.cars.Car;
+import com.przemo.rentcar.exceptions.particularErrors.NotFoundEntity;
 import com.przemo.rentcar.repositoriesDB.BrandRepository;
-import com.przemo.rentcar.repositoriesDB.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BrandServiceImpl implements BrandService
@@ -17,12 +16,13 @@ public class BrandServiceImpl implements BrandService
     private BrandRepository brandRepository;
 
     @Autowired
-    private CarRepository carRepository;
+    private CarService carService;
 
     @Override
     public void addCarToBrand(long brandId, String plateNumber) {
-        Brand brand = brandRepository.findById(brandId).orElseThrow(() -> new RuntimeException());
-        Car car = carRepository.findByPlateNumber(plateNumber).get();
+        Brand brand = brandRepository.findById(brandId)
+                .orElseThrow(() -> new NotFoundEntity("Not found bran with id "+brandId));
+        Car car = carService.findByPlateNumber(plateNumber);
         brand.addCar(car);
         brandRepository.save(brand);
     }
@@ -31,27 +31,24 @@ public class BrandServiceImpl implements BrandService
     @Override
     public List<Brand> getAllBrands()
     {
-        List<Brand> brands =  brandRepository.getAllBrands();
-        return brands;
+        return brandRepository.getAllBrands();
     }
 
     @Override
     public List<Brand> getAllBrandsWithCars()
     {
         List<Brand> brands =  brandRepository.findAll();
-        for(Brand b:brands)
+        for(Brand brand : brands)
         {
-            for(Car c: b.getCars())
-            {
-                System.out.println(c.getCarDetails());
-            }
+            brand.getCars().forEach(car -> car.getCarDetails());
         }
         return brands;
     }
 
     @Override
-    public Optional<Brand> getBrandById(Long id) {
-        return brandRepository.getBrandById(id);
+    public Brand getBrandById(Long id) {
+        return brandRepository.getBrandById(id)
+                .orElseThrow(() -> new NotFoundEntity("Not found brand with id "+id));
     }
 
     @Override
@@ -65,10 +62,8 @@ public class BrandServiceImpl implements BrandService
     }
 
     @Override
-    public void updateBrand(Brand updatedBrand) {
-        Brand brand = brandRepository.findById(updatedBrand.getBrand_id()).get();
-        brand = updatedBrand;
-        brandRepository.save(brand);
+    public Brand updateBrand(Brand updatedBrand) {
+            return brandRepository.save(updatedBrand);
     }
 
 }

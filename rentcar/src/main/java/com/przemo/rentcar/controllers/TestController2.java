@@ -1,8 +1,6 @@
 package com.przemo.rentcar.controllers;
 
-import com.przemo.rentcar.cars.Brand;
-import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.cars.CarDetails;
+import com.przemo.rentcar.entities.cars.Brand;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,24 +1,22 @@
 package com.przemo.rentcar.services;
 
-import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.orders.CarOrder;
-import com.przemo.rentcar.orders.CarOrderDetails;
-import com.przemo.rentcar.orders.OrderInfo;
-import com.przemo.rentcar.orders.OrderInfoDTO;
+import com.przemo.rentcar.entities.cars.Car;
+import com.przemo.rentcar.entities.orders.CarOrder;
+import com.przemo.rentcar.entities.orders.CarOrderDetails;
+import com.przemo.rentcar.entities.orders.OrderInfo;
+import com.przemo.rentcar.entities.orders.OrderInfoDTO;
+import com.przemo.rentcar.entities.users.Administration;
+import com.przemo.rentcar.entities.users.Client;
+import com.przemo.rentcar.exceptions.particularErrors.NotFoundEntity;
 import com.przemo.rentcar.repositoriesDB.CarOrderDetailsRepository;
 import com.przemo.rentcar.repositoriesDB.CarOrderRepository;
-import com.przemo.rentcar.users.Administration;
-import com.przemo.rentcar.users.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -44,20 +42,23 @@ public class CarOrderServiceImpl implements CarOrderService
 
 
     @Override
-    public Optional<CarOrderDetails> getOrderDetailsById(Long id) {
-        return carOrderDetailsRepository.findById(id);
+    public CarOrderDetails getOrderDetailsById(Long id) {
+        return carOrderDetailsRepository.findById(id)
+                .orElseThrow(() -> new NotFoundEntity("Not found CarOrderDetails with id "+id));
     }
 
     @Override
-    public Optional<CarOrder> getOrderById(Long id) {
-        return carOrderRepository.findById(id);
+    public CarOrder getOrderById(Long id) {
+        return carOrderRepository.findById(id)
+                .orElseThrow(() -> new NotFoundEntity("Not found CarOrder with id "+id));
+
     }
 
     @Override
-    public CarOrderDetails addNewOrder(OrderInfo orderInfo) {
-        Administration administration = administrationService.getAdministrationByEmail(orderInfo.getEmployeeMail()).get();
-        Client client = clientService.getOneClient(orderInfo.getClientId()).get();
-        Car car = carService.getCarByIdLazy(orderInfo.getCarId()).get();
+    public OrderInfo addNewOrder(OrderInfo orderInfo) {
+        Administration administration = administrationService.getAdministrationByEmail(orderInfo.getEmployeeMail());
+        Client client = clientService.getOneClient(orderInfo.getClientId());
+        Car car = carService.getCarByIdLazy(orderInfo.getCarId());
         car.setAvailable(false);
         CarOrderDetails carOrderDetails = new CarOrderDetails();
         carOrderDetails.setDateOfRental(orderInfo.getStartDate());
@@ -68,7 +69,8 @@ public class CarOrderServiceImpl implements CarOrderService
         carOrderDetails.setCar(car);
         carOrderDetails.setCarOrder(carOrder);
         carService.persistCar(car);
-        return carOrderDetailsRepository.save(carOrderDetails);
+        carOrderDetailsRepository.save(carOrderDetails);
+        return orderInfo;
     }
 
     @Override
@@ -77,12 +79,11 @@ public class CarOrderServiceImpl implements CarOrderService
     }
 
     @Override
-    public ResponseEntity<String>  deleteOrderById(Long orderId) {
-        Car car = carOrderService.getOrderDetailsById(orderId).get().getCar();
+    public void deleteOrderById(Long orderId) {
+        Car car = getOrderDetailsById(orderId).getCar();
         car.setAvailable(true);
         carService.persistCar(car);
         carOrderRepository.deleteById(orderId);
-        return new ResponseEntity<>("{ \"text\":\"Order succesfully deleted\"}", HttpStatus.OK);
     }
 
     @Override

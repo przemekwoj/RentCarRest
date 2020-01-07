@@ -1,7 +1,7 @@
 package com.przemo.rentcar.controllers;
 
 import com.przemo.rentcar.services.ClientService;
-import com.przemo.rentcar.users.Client;
+import com.przemo.rentcar.entities.users.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class ClientController
     @GetMapping("/{clientId}")
     public Client getClientById(@PathVariable Long clientId)
     {
-        return clientService.getOneClient(clientId).get();
+        return clientService.getOneClient(clientId);
     }
 
     @GetMapping("/clients")

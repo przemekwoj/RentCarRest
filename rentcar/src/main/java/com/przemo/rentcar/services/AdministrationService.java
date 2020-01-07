@@ -1,11 +1,10 @@
 package com.przemo.rentcar.services;
 
-import com.przemo.rentcar.users.Administration;
-import com.przemo.rentcar.users.Employee;
-import com.przemo.rentcar.users.Supervisor;
+import com.przemo.rentcar.entities.users.Administration;
+import com.przemo.rentcar.entities.users.Employee;
+import com.przemo.rentcar.entities.users.Supervisor;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface AdministrationService
 {
@@ -15,7 +14,7 @@ public interface AdministrationService
 
     List<Supervisor> getAllSupervisors();
 
-    Optional<Administration> getAdministrationById(Long id);
+    Administration getAdministrationById(Long id);
 
     Employee addEmployee(Employee employee);
 
@@ -27,9 +26,9 @@ public interface AdministrationService
 
     void deleteAdministrator(Long id);
 
-    Optional<Administration> findByEmail(String email);
+    Administration findByEmail(String email);
 
-    Optional<Administration> getAdministrationByEmail(String email);
+    Administration getAdministrationByEmail(String email);
 
 
 }

@@ -1,16 +1,15 @@
 package com.przemo.rentcar.services;
 
-import com.przemo.rentcar.cars.Brand;
-import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.cars.CarDetails;
-import com.przemo.rentcar.repositoriesDB.BrandRepository;
+import com.przemo.rentcar.entities.cars.Brand;
+import com.przemo.rentcar.entities.cars.Car;
+import com.przemo.rentcar.entities.cars.CarDetails;
+import com.przemo.rentcar.exceptions.particularErrors.NotFoundEntity;
 import com.przemo.rentcar.repositoriesDB.CarDetailsRepository;
 import com.przemo.rentcar.repositoriesDB.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CarServiceImpl implements CarService
@@ -19,7 +18,7 @@ public class CarServiceImpl implements CarService
     private CarRepository carRepository;
 
     @Autowired
-    private BrandRepository brandRepository;
+    private BrandService brandService;
 
     @Autowired
     private CarDetailsRepository carDetailsRepository;
@@ -31,8 +30,15 @@ public class CarServiceImpl implements CarService
     }
 
     @Override
-    public Optional<Car> getCarByIdLazy(Long Id) {
-        return carRepository.getCarByIdLazy(Id);
+    public Car findByPlateNumber(String plateNumber) {
+        return carRepository.findByPlateNumber(plateNumber)
+                .orElseThrow(() -> new NotFoundEntity("Not found car with plate number "+plateNumber));
+    }
+
+    @Override
+    public Car getCarByIdLazy(Long Id) {
+        return carRepository.getCarByIdLazy(Id)
+                .orElseThrow(() -> new NotFoundEntity("Not found car with id "+Id));
     }
 
     @Override
@@ -47,12 +53,12 @@ public class CarServiceImpl implements CarService
 
     @Override
     public Car addNewCarWithBrand(Car car, long brandId) {
-        Brand brand = brandRepository.findById(brandId).get();
+        Brand brand = brandService.getBrandById(brandId);
         CarDetails carDetails = new CarDetails();
         carDetails.setCar(car);
         brand.addCar(car);
         carDetailsRepository.save(carDetails);
-        brandRepository.save(brand);
+        brandService.persistBrand(brand);
         return car;
     }
 

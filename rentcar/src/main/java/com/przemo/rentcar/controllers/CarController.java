@@ -1,9 +1,9 @@
 package com.przemo.rentcar.controllers;
 
-import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.cars.CarDTO;
-import com.przemo.rentcar.cars.CarDetails;
-import com.przemo.rentcar.cars.CarDetailsDTO;
+import com.przemo.rentcar.entities.cars.Car;
+import com.przemo.rentcar.entities.cars.CarDTO;
+import com.przemo.rentcar.entities.cars.CarDetails;
+import com.przemo.rentcar.entities.cars.CarDetailsDTO;
 import com.przemo.rentcar.services.CarService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -46,8 +46,15 @@ public class CarController
     @GetMapping("/{carId}")
     public CarDTO getCarById(@PathVariable Long carId)
     {
-        Car car = carService.getCarByIdLazy(carId).get(); /// dodac wyjatek tutaj bo Optional typ
+        Car car = carService.getCarByIdLazy(carId);
         return modelMapper.map(car,CarDTO.class);
+    }
+
+    @GetMapping("/carDetail/{carId}")
+    public CarDetailsDTO getCarDetailById(@PathVariable Long carId)
+    {
+        CarDetails carDetails = carService.getCarDetailById(carId);
+        return modelMapper.map(carDetails,CarDetailsDTO.class);
     }
 
     @PostMapping("/carWithBrand/{brandId}")
@@ -63,26 +70,17 @@ public class CarController
     }
 
     @DeleteMapping("/{carId}")
-    public String deleteCarById(@PathVariable Long carId)
+    public void deleteCarById(@PathVariable Long carId)
     {
-        ///potem zmienic zeby zwracalo status zamiast Stringa
         carService.deleteCarById(carId);
-        return "delete successfuly";
     }
 
     @PutMapping("/car")
-    public String updateCarById(@RequestBody Car updatedCar)
+    public Car updateCar(@RequestBody Car updatedCar)
     {
-        carService.persistCar(updatedCar);
-        return "car updated";
+       return carService.persistCar(updatedCar);
     }
 
-    @GetMapping("/carDetail/{carId}")
-    public CarDetailsDTO getCarDetailById(@PathVariable Long carId)
-    {
-        CarDetails carDetails = carService.getCarDetailById(carId);
-        return modelMapper.map(carDetails,CarDetailsDTO.class);
-    }
 
     @PutMapping("carDetail/{carId}")
     public CarDetails updateCarDetail(@RequestBody CarDetails carDetails,@PathVariable Long carId)

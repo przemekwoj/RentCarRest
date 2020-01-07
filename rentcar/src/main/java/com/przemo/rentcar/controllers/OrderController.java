@@ -1,15 +1,11 @@
 package com.przemo.rentcar.controllers;
 
-import com.przemo.rentcar.orders.CarOrder;
-import com.przemo.rentcar.orders.CarOrderDetails;
-import com.przemo.rentcar.orders.OrderInfo;
-import com.przemo.rentcar.orders.OrderInfoDTO;
-import com.przemo.rentcar.services.AdministrationService;
-import com.przemo.rentcar.services.CarOrderServiceImpl;
-import com.przemo.rentcar.services.CarService;
-import com.przemo.rentcar.services.ClientService;
+import com.przemo.rentcar.entities.orders.CarOrder;
+import com.przemo.rentcar.entities.orders.CarOrderDetails;
+import com.przemo.rentcar.entities.orders.OrderInfo;
+import com.przemo.rentcar.entities.orders.OrderInfoDTO;
+import com.przemo.rentcar.services.CarOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -20,27 +16,18 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderController {
 
-    private final CarOrderServiceImpl carOrderService;
-
-    private final AdministrationService administrationService;
-
-    private final ClientService clientService;
-
-    private final CarService carService;
-
+    private final CarOrderService carOrderService;
 
     @Autowired
-    public OrderController(CarOrderServiceImpl carOrderService, AdministrationService administrationService, ClientService clientService, CarService carService) {
+    public OrderController(CarOrderService carOrderService) {
         this.carOrderService = carOrderService;
-        this.administrationService = administrationService;
-        this.clientService = clientService;
-        this.carService = carService;
+
     }
 
     @GetMapping("/{id}")
     public CarOrder getOrderById(@PathVariable Long id)
     {
-        return carOrderService.getOrderById(id).get();
+        return carOrderService.getOrderById(id);
     }
 
     @GetMapping("/orders")
@@ -52,20 +39,18 @@ public class OrderController {
     @GetMapping("details/{id}")
     public CarOrderDetails getOrderDetailsById(@PathVariable Long id)
     {
-        return carOrderService.getOrderDetailsById(id).get();
+        return carOrderService.getOrderDetailsById(id);
     }
 
     @PostMapping("/createNewOrder")
-    public ResponseEntity createNewOrder(@RequestBody OrderInfo orderInfo)
+    public OrderInfo createNewOrder(@RequestBody OrderInfo orderInfo)
     {
-        carOrderService.addNewOrder(orderInfo);
-        return ResponseEntity.status(200).body(orderInfo);
+        return carOrderService.addNewOrder(orderInfo);
     }
 
     @DeleteMapping("delete/{id}")
-    public ResponseEntity deleteOrderById(@PathVariable Long id){
-
-        return carOrderService.deleteOrderById(id);
+    public void deleteOrderById(@PathVariable Long id){
+         carOrderService.deleteOrderById(id);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.przemo.rentcar.repositoriesDB;
 
-import com.przemo.rentcar.cars.Brand;
+import com.przemo.rentcar.entities.cars.Brand;
 import com.przemo.rentcar.repositoriesDB.queries.BrandQueries;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

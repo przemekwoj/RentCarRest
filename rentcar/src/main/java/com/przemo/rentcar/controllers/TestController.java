@@ -1,14 +1,14 @@
 package com.przemo.rentcar.controllers;
 
-import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.orders.CarOrder;
-import com.przemo.rentcar.orders.CarOrderDetails;
+import com.przemo.rentcar.entities.cars.Car;
+import com.przemo.rentcar.entities.orders.CarOrder;
+import com.przemo.rentcar.entities.orders.CarOrderDetails;
 import com.przemo.rentcar.repositoriesDB.*;
 import com.przemo.rentcar.services.CarService;
 import com.przemo.rentcar.services.ClientService;
-import com.przemo.rentcar.users.Client;
-import com.przemo.rentcar.users.Employee;
-import com.przemo.rentcar.users.Supervisor;
+import com.przemo.rentcar.entities.users.Client;
+import com.przemo.rentcar.entities.users.Employee;
+import com.przemo.rentcar.entities.users.Supervisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,11 +63,11 @@ public class TestController
     @GetMapping("/sposobZapisaniaZamowienieKlinetOrazEmplyeeZOrderemOrazOrderDetais")
     public String sposobZapisaniaZamowienieKlinetOrazEmplyeeZOrderemOrazOrderDetais()
     {
-        Client client = clientService.getOneClient(8L).get();
+        Client client = clientService.getOneClient(8L);
 
         Employee employee = employeeRepository.findById(9L).get();
 
-        Car car = carService.getCarByIdLazy(7L).get();
+        Car car = carService.getCarByIdLazy(7L);
 
         CarOrder carOrder = new CarOrder();
 
@@ -92,11 +92,11 @@ public class TestController
     @GetMapping("/test")
     public String test()
     {
-        Client client = clientService.getOneClient(8L).get();
+        Client client = clientService.getOneClient(8L);
 
         Employee employee = employeeRepository.findById(9L).get();
 
-        Car car = carService.getCarByIdLazy(7L).get();
+        Car car = carService.getCarByIdLazy(7L);
 
         CarOrder carOrder = new CarOrder();
 

@@ -1,9 +1,8 @@
 package com.przemo.rentcar.services;
 
-import com.przemo.rentcar.users.Client;
+import com.przemo.rentcar.entities.users.Client;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ClientService
 {
@@ -13,7 +12,7 @@ public interface ClientService
 
     Client updateClient(Client client,Long clientId);
 
-    Optional<Client> getOneClient(Long id);
+    Client getOneClient(Long id);
 
     List<Client> getAllClients();
 }

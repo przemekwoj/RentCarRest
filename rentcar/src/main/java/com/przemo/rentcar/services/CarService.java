@@ -1,10 +1,9 @@
 package com.przemo.rentcar.services;
 
-import com.przemo.rentcar.cars.Car;
-import com.przemo.rentcar.cars.CarDetails;
+import com.przemo.rentcar.entities.cars.Car;
+import com.przemo.rentcar.entities.cars.CarDetails;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public interface CarService
@@ -17,7 +16,7 @@ public interface CarService
 
     List<Car> getAvailableCars();
 
-    Optional<Car> getCarByIdLazy(Long Id);
+    Car getCarByIdLazy(Long Id);
 
     Car persistCar(Car car);
 
@@ -26,5 +25,7 @@ public interface CarService
     CarDetails updateCarDetail( CarDetails carDetails,  Long carId);
 
     Car addNewCarWithBrand(Car car, long brandId);
+
+    Car findByPlateNumber(String plateNumber);
 
 }

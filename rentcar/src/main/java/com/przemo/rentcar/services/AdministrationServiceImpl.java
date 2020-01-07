@@ -1,16 +1,16 @@
 package com.przemo.rentcar.services;
 
+import com.przemo.rentcar.entities.users.Administration;
+import com.przemo.rentcar.entities.users.Employee;
+import com.przemo.rentcar.entities.users.Supervisor;
+import com.przemo.rentcar.exceptions.particularErrors.NotFoundEntity;
 import com.przemo.rentcar.repositoriesDB.AdministrationRepository;
 import com.przemo.rentcar.repositoriesDB.EmployeeRepository;
 import com.przemo.rentcar.repositoriesDB.SupervisorRepository;
-import com.przemo.rentcar.users.Administration;
-import com.przemo.rentcar.users.Employee;
-import com.przemo.rentcar.users.Supervisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AdministrationServiceImpl implements AdministrationService
@@ -30,13 +30,15 @@ public class AdministrationServiceImpl implements AdministrationService
     }
 
     @Override
-    public Optional<Administration> getAdministrationByEmail(String email) {
-        return administrationRepository.getAdministrationByEmail(email);
+    public Administration getAdministrationByEmail(String email) {
+        return administrationRepository.getAdministrationByEmail(email)
+                .orElseThrow(() -> new NotFoundEntity("Not found administration with email "+email));
     }
 
     @Override
-    public Optional<Administration> findByEmail(String email) {
-        return administrationRepository.findByEmail(email);
+    public Administration findByEmail(String email) {
+        return administrationRepository.findByEmail(email)
+                .orElseThrow(() -> new NotFoundEntity("Not found administration with email "+email));
     }
 
     @Override
@@ -50,8 +52,9 @@ public class AdministrationServiceImpl implements AdministrationService
     }
 
     @Override
-    public Optional<Administration> getAdministrationById(Long id) {
-        return administrationRepository.findById(id);
+    public Administration getAdministrationById(Long id) {
+        return administrationRepository.findById(id)
+                .orElseThrow(() -> new NotFoundEntity("Not found administration with id "+id));
     }
 
     @Override

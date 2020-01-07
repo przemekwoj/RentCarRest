@@ -1,11 +1,12 @@
 package com.przemo.rentcar.controllers;
 
-import com.przemo.rentcar.cars.Brand;
-import com.przemo.rentcar.cars.BrandDTO;
+import com.przemo.rentcar.entities.cars.Brand;
+import com.przemo.rentcar.entities.cars.BrandDTO;
 import com.przemo.rentcar.services.BrandService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -36,41 +37,36 @@ public class BrandController
 
     @GetMapping("/{brandId}")
     public BrandDTO getBrandById(@PathVariable Long brandId) {
-        Brand brand = brandService.getBrandById(brandId).get();
+        Brand brand = brandService.getBrandById(brandId);
         return modelMapper.map(brand,BrandDTO.class);}
 
     @GetMapping("/withCars")
-    public List<BrandDTO> getAllBrandsWithCars()
+    public List<Brand> getAllBrandsWithCars()
     {
-        List<Brand> brands = brandService.getAllBrandsWithCars();
-        return  modelMapper.map(brands, new TypeToken<List<BrandDTO>>(){}.getType());
+        return brandService.getAllBrandsWithCars();
     }
 
     @PostMapping("/brand")
-    public Brand addNewBrand(@RequestBody Brand brand)
+    public Brand addNewBrand(@Validated @RequestBody Brand brand)
     {
         return brandService.persistBrand(brand);
     }
 
     @DeleteMapping("/{brandId}")
-    public String deleteBrandById(@PathVariable Long brandId)
+    public void deleteBrandById(@PathVariable Long brandId)
     {
-        ///potem zmienic zeby zwracalo status zamiast Stringa
         brandService.deleteBrandById(brandId);
-        return "delete successfuly";
     }
 
     @PutMapping("/brand")
-    public String updateBrand(@RequestBody Brand updatedBrand)
+    public Brand updateBrand(@Validated @RequestBody Brand updatedBrand)
     {
-        brandService.updateBrand(updatedBrand);
-        return "brand updated";
+        return brandService.updateBrand(updatedBrand);
     }
 
     @PatchMapping("/brandId/{brandId}/plateNumber/{plateNumber}")
-    public String addCarToBrand(@PathVariable long brandId,@PathVariable String plateNumber)
+    public void addCarToBrand(@PathVariable long brandId,@PathVariable String plateNumber)
     {
         brandService.addCarToBrand(brandId,plateNumber);
-        return  "carAddedToBrand";
     }
 }

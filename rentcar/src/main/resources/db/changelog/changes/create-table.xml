@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-1">
+        <preConditions onFail="CONTINUE">
+           <not><tableExists tableName="administration"/></not>
+        </preConditions>
+        <createTable tableName="administration">
+            <column name="role" type="VARCHAR(31)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-2">
+        <preConditions onFail="CONTINUE">
+            <not><tableExists tableName="brand"/></not>
+        </preConditions>
+        <createTable tableName="brand">
+            <column name="brand_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="amount_of_available_cars" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_of_cars" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="brand_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-3">
+        <preConditions onFail="CONTINUE">
+            <not><tableExists tableName="car"/></not>
+        </preConditions>
+        <createTable tableName="car">
+            <column name="car_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="available" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plate_number" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="brand_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-4">
+        <preConditions onFail="CONTINUE">
+            <not><tableExists tableName="car_details"/></not>
+        </preConditions>
+        <createTable tableName="car_details">
+            <column name="car_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="color" type="VARCHAR(255)"/>
+            <column name="hight" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="weight" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-5">
+        <preConditions onFail="CONTINUE">
+            <not><tableExists tableName="car_order_details"/></not>
+        </preConditions>
+        <createTable tableName="car_order_details">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date_of_rental" type="date"/>
+            <column name="date_of_return" type="date"/>
+            <column name="price" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="car_id" type="BIGINT"/>
+            <column name="is_detained" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-6">
+        <preConditions onFail="CONTINUE">
+            <not><tableExists tableName="carorder"/></not>
+        </preConditions>
+        <createTable tableName="carorder">
+            <column name="order_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="stuff_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-7">
+        <preConditions onFail="CONTINUE">
+            <not><tableExists tableName="client"/></not>
+        </preConditions>
+        <createTable tableName="client">
+            <column name="user_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-8">
+        <preConditions onFail="CONTINUE">
+            <not><tableExists tableName="hibernate_sequence"/></not>
+        </preConditions>
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-12">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <indexExists indexName="FK762ryab336n3a8iyjm842rqtb"></indexExists>
+            </not>
+        </preConditions>
+        <createIndex indexName="FK762ryab336n3a8iyjm842rqtb" tableName="carorder">
+            <column name="client_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-13">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <indexExists indexName="FKf5946w1ahgscae56e9soycemq"></indexExists>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKf5946w1ahgscae56e9soycemq" tableName="carorder">
+            <column name="stuff_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-14">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <indexExists indexName="FKj1mws2ruu9q6k2sa4pwlxthxn"></indexExists>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKj1mws2ruu9q6k2sa4pwlxthxn" tableName="car">
+            <column name="brand_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-15">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <indexExists indexName="FKk47ci26c9o2j4fvi2fvx0lm9k"></indexExists>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKk47ci26c9o2j4fvi2fvx0lm9k" tableName="car_order_details">
+            <column name="car_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-16">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK3ipa0jv81dgrpefi6q5xkbkyi" ></foreignKeyConstraintExists>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="car_order_details" constraintName="FK3ipa0jv81dgrpefi6q5xkbkyi" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="order_id" referencedTableName="carorder"/>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-17">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FK762ryab336n3a8iyjm842rqtb" ></foreignKeyConstraintExists>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="carorder" constraintName="FK762ryab336n3a8iyjm842rqtb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="user_id" referencedTableName="client"/>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-18">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FKe1f3xuv251ctauli7odq7yw4o" ></foreignKeyConstraintExists>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="car_id" baseTableName="car_details" constraintName="FKe1f3xuv251ctauli7odq7yw4o" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="car_id" referencedTableName="car"/>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-19">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FKf5946w1ahgscae56e9soycemq" ></foreignKeyConstraintExists>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="stuff_id" baseTableName="carorder" constraintName="FKf5946w1ahgscae56e9soycemq" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="user_id" referencedTableName="administration"/>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-20">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FKj1mws2ruu9q6k2sa4pwlxthxn" ></foreignKeyConstraintExists>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="brand_id" baseTableName="car" constraintName="FKj1mws2ruu9q6k2sa4pwlxthxn" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="brand_id" referencedTableName="brand"/>
+    </changeSet>
+    <changeSet author="przemoemodrzemo (generated)" id="1576771528295-21">
+        <preConditions onFail="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="FKk47ci26c9o2j4fvi2fvx0lm9k" ></foreignKeyConstraintExists>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="car_id" baseTableName="car_order_details" constraintName="FKk47ci26c9o2j4fvi2fvx0lm9k" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="car_id" referencedTableName="car"/>
+    </changeSet>
+</databaseChangeLog>
