@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="PW" id="insert-Car_BMW_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="1" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="true" type="BIT(1)"/>
+            <column name="plate_number" value="CW12343" type="VARCHAR(255)"/>
+            <column name="brand_id" value="1" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_BMW_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="2" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="true" type="BIT(1)"/>
+            <column name="plate_number" value="CWA13AA" type="VARCHAR(255)"/>
+            <column name="brand_id" value="1" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_BMW_3" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="3" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="true" type="BIT(1)"/>
+            <column name="plate_number" value="CWLAD3" type="VARCHAR(255)"/>
+            <column name="brand_id" value="1" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_BMW_4" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="4" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="false" type="BIT(1)"/>
+            <column name="plate_number" value="PZ12343" type="VARCHAR(255)"/>
+            <column name="brand_id" value="1" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_AUDI_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="5" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="true" type="BIT(1)"/>
+            <column name="plate_number" value="CW0PZ" type="VARCHAR(255)"/>
+            <column name="brand_id" value="2" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_AUDI_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="6" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="false" type="BIT(1)"/>
+            <column name="plate_number" value="CW0PZ4" type="VARCHAR(255)"/>
+            <column name="brand_id" value="2" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_AUDI_3" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="7" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="false" type="BIT(1)"/>
+            <column name="plate_number" value="CWLPZ4" type="VARCHAR(255)"/>
+            <column name="brand_id" value="2" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_AUDI_4" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="8" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="false" type="BIT(1)"/>
+            <column name="plate_number" value="CWLPZ4P" type="VARCHAR(255)"/>
+            <column name="brand_id" value="2" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_FORD_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="9" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="false" type="BIT(1)"/>
+            <column name="plate_number" value="PZ898A" type="VARCHAR(255)"/>
+            <column name="brand_id" value="3" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_FORD_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="10" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="true" type="BIT(1)"/>
+            <column name="plate_number" value="PZC898A" type="VARCHAR(255)"/>
+            <column name="brand_id" value="3" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_MAZDA_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car">
+            <column name="car_id" value="11" type="BIGINT(20)"/>
+            <column name="available" valueBoolean="false" type="BIT(1)"/>
+            <column name="plate_number" value="TRN199" type="VARCHAR(255)"/>
+            <column name="brand_id" value="4" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

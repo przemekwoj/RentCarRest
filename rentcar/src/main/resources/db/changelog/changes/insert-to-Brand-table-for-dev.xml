@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="PW" id="insert-Brand_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="brand">
+            <column name="brand_id" value="1" type="BIGINT(20)"/>
+            <column name="amount_of_available_cars" value="3" type="INT(11)"/>
+            <column name="amount_of_cars" value="4" type="INT(11)"/>
+            <column name="brand_name" value="BMW" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Brand_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="brand">
+            <column name="brand_id" value="2" type="BIGINT(20)"/>
+            <column name="amount_of_available_cars" value="1" type="INT(11)"/>
+            <column name="amount_of_cars" value="4" type="INT(11)"/>
+            <column name="brand_name" value="AUDI" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Brand_3" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="brand">
+            <column name="brand_id" value="3" type="BIGINT(20)"/>
+            <column name="amount_of_available_cars" value="1" type="INT(11)"/>
+            <column name="amount_of_cars" value="2" type="INT(11)"/>
+            <column name="brand_name" value="FORD" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Brand_4" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="brand">
+            <column name="brand_id" value="4" type="BIGINT(20)"/>
+            <column name="amount_of_available_cars" value="0" type="INT(11)"/>
+            <column name="amount_of_cars" value="1" type="INT(11)"/>
+            <column name="brand_name" value="MAZDA" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

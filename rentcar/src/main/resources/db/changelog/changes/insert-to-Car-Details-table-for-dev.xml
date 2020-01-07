@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="PW" id="insert-Car_Details_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="1" type="BIGINT(20)"/>
+            <column name="color" value="blue" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="2" type="BIGINT(20)"/>
+            <column name="color" value="yellow" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_3" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="3" type="BIGINT(20)"/>
+            <column name="color" value="pink" type="VARCHAR(255)"/>
+            <column name="hight" value="1" type="INT11)"/>
+            <column name="weight" value="2" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_4" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="4" type="BIGINT(20)"/>
+            <column name="color" value="purple" type="VARCHAR(255)"/>
+            <column name="hight" value="1" type="INT11)"/>
+            <column name="weight" value="2" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_5" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="5" type="BIGINT(20)"/>
+            <column name="color" value="black" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_6" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="6" type="BIGINT(20)"/>
+            <column name="color" value="black" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_7" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="7" type="BIGINT(20)"/>
+            <column name="color" value="silver" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_8" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="8" type="BIGINT(20)"/>
+            <column name="color" value="blue" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_9" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="9" type="BIGINT(20)"/>
+            <column name="color" value="white" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_10" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="10" type="BIGINT(20)"/>
+            <column name="color" value="green" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Car_Details_11" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_details">
+            <column name="car_id" value="11" type="BIGINT(20)"/>
+            <column name="color" value="brown" type="VARCHAR(255)"/>
+            <column name="hight" value="2" type="INT11)"/>
+            <column name="weight" value="4" type="INT(11)"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

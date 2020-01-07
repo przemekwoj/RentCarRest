@@ -6,5 +6,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include relativeToChangelogFile="true" file="changes/create-table.xml"/>
-    <include relativeToChangelogFile="true" file="changes/update-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-Administration-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-Brand-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-Car-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-Car-Details-table-for-dev.xml"/>
 </databaseChangeLog>

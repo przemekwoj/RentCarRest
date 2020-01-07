@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="PW" id="insert-Administration_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="administration">
+            <column name="role" value="Administration" type="VARCHAR(31)"/>
+            <column name="user_id" value="1" type="BIGINT(20)"/>
+            <column name="email" value="a@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="a" type="VARCHAR(30)"/>
+            <column name="last_name" value="a" type="VARCHAR(30)"/>
+            <column name="password" value="$2a$10$YF7k2.QSu9QAmi.8jVzqNelXYsALbCUK54J/WAS/wmwOZvpT5Rb7C" type="VARCHAR(255)"/>
+            <column name="phone" value="567896777" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Administation_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="administration">
+            <column name="role" value="Administration" type="VARCHAR(31)"/>
+            <column name="user_id" value="2" type="BIGINT(20)"/>
+            <column name="email" value="b@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="b" type="VARCHAR(30)"/>
+            <column name="last_name" value="b" type="VARCHAR(30)"/>
+            <column name="password" value="$2a$10$YCNghM.zpocU6L5b1gvumuXSG732lQsR4sLmsf6premaJ2j9YgD3." type="VARCHAR(255)"/>
+            <column name="phone" value="55576897" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Supervisor_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="administration">
+            <column name="role" value="Supervisor" type="VARCHAR(31)"/>
+            <column name="user_id" value="3" type="BIGINT(20)"/>
+            <column name="email" value="s@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="s" type="VARCHAR(30)"/>
+            <column name="last_name" value="s" type="VARCHAR(30)"/>
+            <column name="password" value="$2a$10$oNrcCEjH7h7XwgGDorWd4.98/VezrLE3DbFViVQLIV.f7s2leLznS" type="VARCHAR(255)"/>
+            <column name="phone" value="678456567" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Supervisor_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="administration">
+            <column name="role" value="Supervisor" type="VARCHAR(31)"/>
+            <column name="user_id" value="4" type="BIGINT(20)"/>
+            <column name="email" value="k@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="k" type="VARCHAR(30)"/>
+            <column name="last_name" value="k" type="VARCHAR(30)"/>
+            <column name="password" value="$2a$10$yhRNrkvkmWqFRNIQRl72c.eZvzzFzqV2UoG3Ol7xWKGCZrXKNptoi" type="VARCHAR(255)"/>
+            <column name="phone" value="678456567" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Employee_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="administration">
+            <column name="role" value="Employee" type="VARCHAR(31)"/>
+            <column name="user_id" value="5" type="BIGINT(20)"/>
+            <column name="email" value="e@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="e" type="VARCHAR(30)"/>
+            <column name="last_name" value="e" type="VARCHAR(30)"/>
+            <column name="password" value="$2a$10$.2KAw6NY7KOft5us0YvVNO0KDSi79oPyDlkGjgAfYrS2b3s02NNpC" type="VARCHAR(255)"/>
+            <column name="phone" value="456567345" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Employee_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="administration">
+            <column name="role" value="Employee" type="VARCHAR(31)"/>
+            <column name="user_id" value="6" type="BIGINT(20)"/>
+            <column name="email" value="f@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="f" type="VARCHAR(30)"/>
+            <column name="last_name" value="f" type="VARCHAR(30)"/>
+            <column name="password" value="$2a$10$CTbFHKRAGLCw7OsimXYH7..HCypKarCFsz78bku6QRPOjlZrpZlby" type="VARCHAR(255)"/>
+            <column name="phone" value="456567345" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
