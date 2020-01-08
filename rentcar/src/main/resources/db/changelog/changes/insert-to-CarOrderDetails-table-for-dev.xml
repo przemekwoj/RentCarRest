@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="PW" id="insert-OrderDetails_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_order_details">
+            <column name="id" value="1" type="BIGINT(20)"/>
+            <column name="date_of_rental" value="2019-12-04" type="DATE"/>
+            <column name="date_of_return" value="2019-12-05" type="DATE"/>
+            <column name="price" value="300" type="INT(11)"/>
+            <column name="car_id" value="4" type="BIGINT(20)"/>
+            <column name="is_detained" valueBoolean="false" type="BIT(1)"/>
+        </insert>
+    </changeSet>
+    <changeSet author="PW" id="insert-OrderDetails_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_order_details">
+            <column name="id" value="2" type="BIGINT(20)"/>
+            <column name="date_of_rental" value="2019-12-04" type="DATE"/>
+            <column name="date_of_return" value="2019-12-05" type="DATE"/>
+            <column name="price" value="500" type="INT(11)"/>
+            <column name="car_id" value="6" type="BIGINT(20)"/>
+            <column name="is_detained" valueBoolean="false" type="BIT(1)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-OrderDetails_3" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_order_details">
+            <column name="id" value="3" type="BIGINT(20)"/>
+            <column name="date_of_rental" value="2019-12-04" type="DATE"/>
+            <column name="date_of_return" value="2025-12-05" type="DATE"/>
+            <column name="price" value="30" type="INT(11)"/>
+            <column name="car_id" value="7" type="BIGINT(20)"/>
+            <column name="is_detained" valueBoolean="false" type="BIT(1)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-OrderDetails_4" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_order_details">
+            <column name="id" value="4" type="BIGINT(20)"/>
+            <column name="date_of_rental" value="2018-12-04" type="DATE"/>
+            <column name="date_of_return" value="2019-12-25" type="DATE"/>
+            <column name="price" value="350" type="INT(11)"/>
+            <column name="car_id" value="8" type="BIGINT(20)"/>
+            <column name="is_detained" valueBoolean="false" type="BIT(1)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-OrderDetails_5" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_order_details">
+            <column name="id" value="5" type="BIGINT(20)"/>
+            <column name="date_of_rental" value="2019-06-04" type="DATE"/>
+            <column name="date_of_return" value="2020-12-05" type="DATE"/>
+            <column name="price" value="300" type="INT(11)"/>
+            <column name="car_id" value="9" type="BIGINT(20)"/>
+            <column name="is_detained" valueBoolean="false" type="BIT(1)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-OrderDetails_6" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="car_order_details">
+            <column name="id" value="6" type="BIGINT(20)"/>
+            <column name="date_of_rental" value="2019-06-04" type="DATE"/>
+            <column name="date_of_return" value="2020-12-05" type="DATE"/>
+            <column name="price" value="300" type="INT(11)"/>
+            <column name="car_id" value="11" type="BIGINT(20)"/>
+            <column name="is_detained" valueBoolean="true" type="BIT(1)"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

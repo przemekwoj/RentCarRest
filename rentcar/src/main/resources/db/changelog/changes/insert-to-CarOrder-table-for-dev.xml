@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="PW" id="insert-Order_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="carorder">
+            <column name="order_id" value="1" type="BIGINT(20)"/>
+            <column name="stuff_id" value="3" type="BIGINT(20)"/>
+            <column name="client_id" value="1" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Order_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="carorder">
+            <column name="order_id" value="2" type="BIGINT(20)"/>
+            <column name="stuff_id" value="4" type="BIGINT(20)"/>
+            <column name="client_id" value="1" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Order_3" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="carorder">
+            <column name="order_id" value="3" type="BIGINT(20)"/>
+            <column name="stuff_id" value="5" type="BIGINT(20)"/>
+            <column name="client_id" value="2" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Order_4" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="carorder">
+            <column name="order_id" value="4" type="BIGINT(20)"/>
+            <column name="stuff_id" value="6" type="BIGINT(20)"/>
+            <column name="client_id" value="2" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Order_5" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="carorder">
+            <column name="order_id" value="5" type="BIGINT(20)"/>
+            <column name="stuff_id" value="4" type="BIGINT(20)"/>
+            <column name="client_id" value="3" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Order_6" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="carorder">
+            <column name="order_id" value="6" type="BIGINT(20)"/>
+            <column name="stuff_id" value="5" type="BIGINT(20)"/>
+            <column name="client_id" value="4" type="BIGINT(20)"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

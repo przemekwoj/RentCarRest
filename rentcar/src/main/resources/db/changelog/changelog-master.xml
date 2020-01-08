@@ -10,4 +10,8 @@
     <include relativeToChangelogFile="true" file="changes/insert-to-Brand-table-for-dev.xml"/>
     <include relativeToChangelogFile="true" file="changes/insert-to-Car-table-for-dev.xml"/>
     <include relativeToChangelogFile="true" file="changes/insert-to-Car-Details-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-Client-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-CarOrder-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-CarOrderDetails-table-for-dev.xml"/>
+    <include relativeToChangelogFile="true" file="changes/insert-to-hibernate-sequence-table-for-dev.xml"/>
 </databaseChangeLog>

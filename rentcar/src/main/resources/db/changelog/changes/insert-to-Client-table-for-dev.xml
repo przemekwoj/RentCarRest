@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="PW" id="insert-Client_1" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="1" type="BIGINT(20)"/>
+            <column name="email" value="przemo@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="Przemek" type="VARCHAR(255)"/>
+            <column name="last_name" value="Wojtcz" type="VARCHAR(255)"/>
+            <column name="phone" value="567987456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_2" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="2" type="BIGINT(20)"/>
+            <column name="email" value="client@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="client123" type="VARCHAR(255)"/>
+            <column name="last_name" value="client123" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_3" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="3" type="BIGINT(20)"/>
+            <column name="email" value="zz@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="zz" type="VARCHAR(255)"/>
+            <column name="last_name" value="zz" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_4" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="4" type="BIGINT(20)"/>
+            <column name="email" value="xx@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="xx" type="VARCHAR(255)"/>
+            <column name="last_name" value="xx" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_5" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="5" type="BIGINT(20)"/>
+            <column name="email" value="vv@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="vv" type="VARCHAR(255)"/>
+            <column name="last_name" value="vv" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_6" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="6" type="BIGINT(20)"/>
+            <column name="email" value="nn@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="nn" type="VARCHAR(255)"/>
+            <column name="last_name" value="n" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_7" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="7" type="BIGINT(20)"/>
+            <column name="email" value="jj@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="jj" type="VARCHAR(255)"/>
+            <column name="last_name" value="jj" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_8" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="8" type="BIGINT(20)"/>
+            <column name="email" value="dd@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="dd" type="VARCHAR(255)"/>
+            <column name="last_name" value="dd" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_9" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="9" type="BIGINT(20)"/>
+            <column name="email" value="gg@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="gg" type="VARCHAR(255)"/>
+            <column name="last_name" value="gg" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_10" context="dev">
+      <insert schemaName="liquibasedev"
+            tableName="client">
+            <column name="user_id" value="10" type="BIGINT(20)"/>
+            <column name="email" value="tt@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="tt" type="VARCHAR(255)"/>
+            <column name="last_name" value="tt" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_11" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="11" type="BIGINT(20)"/>
+            <column name="email" value="tt1@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="tt1" type="VARCHAR(255)"/>
+            <column name="last_name" value="tt1" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_12" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="12" type="BIGINT(20)"/>
+            <column name="email" value="gh@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="gh" type="VARCHAR(255)"/>
+            <column name="last_name" value="gh" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_13" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="13" type="BIGINT(20)"/>
+            <column name="email" value="tzt@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="ztt" type="VARCHAR(255)"/>
+            <column name="last_name" value="tzt" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_14" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="14" type="BIGINT(20)"/>
+            <column name="email" value="ghj@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="ghj" type="VARCHAR(255)"/>
+            <column name="last_name" value="ghj" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_15" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="15" type="BIGINT(20)"/>
+            <column name="email" value="jkll@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="jkll" type="VARCHAR(255)"/>
+            <column name="last_name" value="jkll" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="PW" id="insert-Client_16" context="dev">
+        <insert schemaName="liquibasedev"
+                tableName="client">
+            <column name="user_id" value="16" type="BIGINT(20)"/>
+            <column name="email" value="rty@wp.pl" type="VARCHAR(255)"/>
+            <column name="first_name" value="rty" type="VARCHAR(255)"/>
+            <column name="last_name" value="rty" type="VARCHAR(255)"/>
+            <column name="phone" value="567947456" type="VARCHAR(255)"/>
+            <column name="password" value="$2a$10$r0RiKUUu21LUWeceeUd8Ned.0b4OYrb0o.vFcmbrFc2vuMqxrkzcu" type="VARCHAR(255)"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
