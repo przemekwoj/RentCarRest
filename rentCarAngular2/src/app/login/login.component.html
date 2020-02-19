@@ -1,3 +1,42 @@
-<input><br>
-<input><br>
-<button (click)="next()">NEXT</button>
+<div class="mainDiv">
+<form [formGroup]="loginForm" (ngSubmit)="checklogin()">
+  <fieldset>
+    <h3 id="login">Login</h3>
+    <br>
+    <div class="inputFormElement">
+      <label class="email" for="email">
+        email
+      </label>
+      <input id="email" class="email" type="email" formControlName="email" placeholder="enter your email"
+                  (focus)="emailInputFocus()" (blur)="emailInputBlur()">
+      <div *ngIf="showEmailError">
+        <span class="help-block" *ngIf="email.errors.required">
+          email is required.
+        </span>
+        <span class="help-block" *ngIf="email.errors.email">
+        Invalid email.
+        </span>
+      </div>
+    </div>
+    <br>
+    <div class="inputFormElement">
+      <label class="password" for="password">
+        password
+      </label>
+      <input matInput class="password" id="password" type="password" formControlName="password" placeholder="enter your password"
+                  (focus)="passwordInputFocus()" (blur)="passwordInputBlur()">
+      <div *ngIf="showPasswordError"
+      class="alert alert-danger">
+        <span class="help-block" *ngIf="password.errors.required">
+          password is required.
+        </span>
+      </div>
+    </div>
+    <br>
+    <span class="help-block" *ngIf="wrongPasswordOrEmail">
+      Wrong password or email
+    </span>
+    <button id="submitButton" type="submit" [disabled]="loginForm.invalid">Submit</button>
+  </fieldset>
+  </form>
+</div>

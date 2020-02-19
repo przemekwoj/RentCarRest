@@ -1,0 +1,34 @@
+<p>
+  add-client works!
+</p>
+<form [formGroup]="newClient" (ngSubmit)="addClient()">
+  
+  <label>
+    firstName:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+    lastName:
+    <input type="text" formControlName="lastName">
+  </label>
+
+  <label>
+    email:
+    <input type="text" formControlName="email">
+  </label>
+
+  <label>
+    phone:
+    <input type="text" formControlName="phone">
+  </label>
+
+  <label>
+    password:
+    <input type="text" formControlName="password">
+  </label>
+
+  <button type="submit" [disabled]="!newClient.valid">Submit</button>
+</form>
+{{errorMsg}}
+

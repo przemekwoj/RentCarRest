@@ -1,6 +1,17 @@
-xd usunac to w app.component.html xd
+isAuthenticated : {{isAuthenticated}}
 <br>
-<button (click)="getCars()">GET CARS</button>
-<button (click)="postCar()">POST CAR</button>
-<button (click)="createBrand()">Create Brand</button>
-<router-outlet></router-outlet>
+
+<div [hidden]="isAuthenticated">
+    <app-login></app-login>
+</div>
+<div [hidden]="!isAuthenticated">
+    <br>
+    <button (click)="getCars()">GET CARS</button>
+    <button (click)="postCar()">POST CAR</button>
+    <button (click)="createBrand()">Create Brand</button>
+    <button (click)="addClient()">addClinet</button>
+    <button (click)="addOrder()">addOrder</button>
+    <button (click)="allOrders()">allOrders</button>
+    <app-logout></app-logout>
+    <router-outlet></router-outlet>
+</div>

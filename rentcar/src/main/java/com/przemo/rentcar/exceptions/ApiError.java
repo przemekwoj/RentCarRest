@@ -38,5 +38,11 @@ public class ApiError {
         this.message = message;
         this.debugMessage = ex.getLocalizedMessage();
     }
+
+    public ApiError(HttpStatus status, LocalDateTime timestamp, String message) {
+        this.status = status;
+        this.timestamp = timestamp;
+        this.message = message;
+    }
 }
 

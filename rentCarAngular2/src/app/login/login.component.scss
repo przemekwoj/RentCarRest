@@ -1,0 +1,47 @@
+.mainDiv {
+    display: flex;
+    justify-content: center;
+  }
+
+#login {
+   display: flex;
+   justify-content: center;
+}
+
+#submitButton {
+    float:right;
+}
+
+.password {
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.email {
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+fieldset {
+    border-radius: 25px;
+    border: 2px solid #73AD21; 
+}
+
+.help-block {
+    color: red;
+    font-size: 55%;
+}
+
+input.ng-invalid.ng-touched:not(:focus) {
+    border-color: red;
+  }
+
+  input.ng-invalid.ng-dirty:not(:focus) {
+    border-color: red;
+  }
+
+  .inputFormElement {
+      height: 50px;
+  }

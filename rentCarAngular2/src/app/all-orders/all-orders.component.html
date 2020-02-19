@@ -1,0 +1,8 @@
+<p>
+  all-orders works!
+</p>
+<li *ngFor="let order of orders; let i = index">
+  orderId: {{order.orderId}}  dateOfRental: {{order.dateOfRental}}  dateOfReturn: {{order.dateOfReturn}}
+  clientName: {{order.clientName}}  carBrandName: {{order.carBrandName}}  administrationName: {{order.administrationName}}
+  <button (click)="deleteOrder(order.orderId)">delete ORder</button>
+</li>

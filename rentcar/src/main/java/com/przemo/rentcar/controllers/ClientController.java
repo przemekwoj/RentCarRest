@@ -3,13 +3,16 @@ package com.przemo.rentcar.controllers;
 import com.przemo.rentcar.services.ClientService;
 import com.przemo.rentcar.entities.users.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @Transactional
+@Validated
 @RequestMapping("/client")
 public class ClientController
 {
@@ -33,7 +36,7 @@ public class ClientController
     }
 
     @PostMapping("/client")
-    public  Client addClient(@RequestBody Client client)
+    public  Client addClient(@RequestBody @Valid Client client)
     {
         return clientService.addClient(client);
     }

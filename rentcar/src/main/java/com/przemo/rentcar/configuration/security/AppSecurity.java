@@ -1,6 +1,7 @@
 package com.przemo.rentcar.configuration.security;
 
 
+import com.przemo.rentcar.exceptions.GlobalExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -43,10 +44,12 @@ public class AppSecurity extends WebSecurityConfigurerAdapter
                 //.antMatchers("/**").authenticated()
                 //.antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
-                .and().httpBasic()
+                .and()
+                .httpBasic()
                 //.antMatchers("/login").permitAll()
                 .and().cors()
-                .and().csrf().disable();
+                .and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(new GlobalExceptionHandler());
 
                 //.anyRequest().authenticated();
     }
@@ -76,5 +79,7 @@ public class AppSecurity extends WebSecurityConfigurerAdapter
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }*/
+
+
 
 }

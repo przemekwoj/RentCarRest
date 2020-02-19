@@ -1,0 +1,24 @@
+<p>
+  order works!
+</p>
+
+<form [formGroup]="newOrder" (ngSubmit)="createNewOrder()">
+  
+  
+  <select formControlName="clientId">
+    <option *ngFor="let client of clients; let i = index" [value]="client.user_id">{{client.firstName}} {{client.lastName}}</option>  
+  </select>
+
+  <select formControlName="carId">
+    <option *ngFor="let car of cars; let i = index" [value]="car.car_id">{{car.plateNumber}}</option>  
+  </select>
+
+  <button type="submit" [disabled]="!newOrder.valid">Submit</button>
+</form>
+{{startDate | date}}
+
+<button (click)="addDatestartDate()">addDate</button>
+<button (click)="subtractDatestartDate()">subtractDate</button>
+{{endDate | date}}
+<button (click)="addDateEndDate()">addDate</button>
+<button (click)="subtractDateEndDate()">subtractDate</button>

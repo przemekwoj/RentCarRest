@@ -18,7 +18,7 @@ export class PostCarComponent implements OnInit {
 
   newCar = new FormGroup({
     plateNumber: new FormControl(''),
-    available: new FormControl(''),
+    available: new FormControl(true),
     brandId: new FormControl(''),
   });
 

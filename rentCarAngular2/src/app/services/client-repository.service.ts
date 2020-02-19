@@ -1,36 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Car } from '../car';
-import { post } from 'selenium-webdriver/http';
-import { Observable } from 'rxjs';
-import { ReturnStatement } from '@angular/compiler';
-import { Brand } from '../brand';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { AuthenticationServiceService } from './authentication-service.service';
-
+import { Client } from '../client';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class BrandRepository {
-
+export class ClientRepositoryService {
   email: string;
   password: string;
-
   constructor(private http: HttpClient,private authentcationService: AuthenticationServiceService) { }
 
-  getBrands() {
+  postClient(client: Client,): Observable<any> {
     this.setEmailAndPassword();
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.email+':'+this.password) });
-    return this.http.get('http://localhost:8080/brand/brands',{headers});
+    const url = 'http://localhost:8080/client/client/';
+    return this.http.post<Client>(url, client,{headers});
+           //   .pipe(catchError(this.errorHandlerAddClient));
   }
 
-  postBrand(brand: Brand): Observable<Brand> {
+  getClients() {
     this.setEmailAndPassword();
+    console.log(this.email)
+    console.log(this.password)
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.email+':'+this.password) });
-    return this.http.post<Brand>('http://localhost:8080/brand/brand', brand,{headers});
+    return this.http.get('http://localhost:8080/client/clients',{headers});
   }
-
   setEmailAndPassword() {
     this.authentcationService.email.subscribe(email => this.email = email);
     this.authentcationService.password.subscribe(password => this.password = password)
     }
+
+  /*  errorHandlerAddClient(errorHttp: HttpErrorResponse) {
+      return throwError(errorHttp.error);
+    }*/
 }
