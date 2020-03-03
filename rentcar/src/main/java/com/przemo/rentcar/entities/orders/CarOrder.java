@@ -2,8 +2,7 @@ package com.przemo.rentcar.entities.orders;
 
 import com.przemo.rentcar.entities.users.Administration;
 import com.przemo.rentcar.entities.users.Client;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +11,9 @@ import javax.validation.constraints.NotNull;
 @Table(name = "carorder")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarOrder
 {
     @Id
@@ -30,7 +32,4 @@ public class CarOrder
 
     @OneToOne(mappedBy = "carOrder", cascade = CascadeType.ALL)
     private CarOrderDetails carOrderDetails;
-
-
-
 }

@@ -7,11 +7,10 @@ import com.przemo.rentcar.entities.orders.OrderInfoDTO;
 
 import java.util.List;
 
-public interface CarOrderService
-{
+public interface CarOrderService {
     CarOrder getOrderById(Long id);
 
-    CarOrderDetails getOrderDetailsById( Long id);
+    CarOrderDetails getOrderDetailsById(Long id);
 
     OrderInfo addNewOrder(OrderInfo orderInfo);
 

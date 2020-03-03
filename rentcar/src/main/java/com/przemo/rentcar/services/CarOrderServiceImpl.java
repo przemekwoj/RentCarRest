@@ -11,7 +11,6 @@ import com.przemo.rentcar.exceptions.particularErrors.NotFoundEntity;
 import com.przemo.rentcar.repositoriesDB.CarOrderDetailsRepository;
 import com.przemo.rentcar.repositoriesDB.CarOrderRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,37 +19,35 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class CarOrderServiceImpl implements CarOrderService
-{
-    @Autowired
-    private CarOrderRepository carOrderRepository;
+public class CarOrderServiceImpl implements CarOrderService {
+    private final CarOrderRepository carOrderRepository;
 
-    @Autowired
-    private CarOrderDetailsRepository carOrderDetailsRepository;
+    private final CarOrderDetailsRepository carOrderDetailsRepository;
 
-    @Autowired
-    private CarService carService;
+    private final CarService carService;
 
-    @Autowired
-    private ClientService clientService;
+    private final ClientService clientService;
 
-    @Autowired
-    private AdministrationService administrationService;
+    private final AdministrationService administrationService;
 
-    @Autowired
-    private CarOrderService carOrderService;
-
+    public CarOrderServiceImpl(CarOrderRepository carOrderRepository, CarOrderDetailsRepository carOrderDetailsRepository, CarService carService, ClientService clientService, AdministrationService administrationService) {
+        this.carOrderRepository = carOrderRepository;
+        this.carOrderDetailsRepository = carOrderDetailsRepository;
+        this.carService = carService;
+        this.clientService = clientService;
+        this.administrationService = administrationService;
+    }
 
     @Override
     public CarOrderDetails getOrderDetailsById(Long id) {
         return carOrderDetailsRepository.findById(id)
-                .orElseThrow(() -> new NotFoundEntity("Not found CarOrderDetails with id "+id));
+                .orElseThrow(() -> new NotFoundEntity("Not found CarOrderDetails with id " + id));
     }
 
     @Override
     public CarOrder getOrderById(Long id) {
         return carOrderRepository.findById(id)
-                .orElseThrow(() -> new NotFoundEntity("Not found CarOrder with id "+id));
+                .orElseThrow(() -> new NotFoundEntity("Not found CarOrder with id " + id));
 
     }
 
@@ -59,18 +56,37 @@ public class CarOrderServiceImpl implements CarOrderService
         Administration administration = administrationService.getAdministrationByEmail(orderInfo.getEmployeeMail());
         Client client = clientService.getOneClient(orderInfo.getClientId());
         Car car = carService.getCarByIdLazy(orderInfo.getCarId());
-        car.setAvailable(false);
-        CarOrderDetails carOrderDetails = new CarOrderDetails();
-        carOrderDetails.setDateOfRental(orderInfo.getStartDate());
-        carOrderDetails.setDateOfReturn(orderInfo.getEndDate());
-        CarOrder carOrder = new CarOrder();
-        carOrder.setStuff(administration);
-        carOrder.setClient(client);
-        carOrderDetails.setCar(car);
-        carOrderDetails.setCarOrder(carOrder);
-        carService.persistCar(car);
+
+        CarOrder carOrder = createCarOrder(administration, client);
+
+        CarOrderDetails carOrderDetails = createCarOrderDetails(orderInfo, car, carOrder);
+
         carOrderDetailsRepository.save(carOrderDetails);
+
+        bookTheCar(car, carOrderDetails);
+
         return orderInfo;
+    }
+
+    private void bookTheCar(Car car, CarOrderDetails carOrderDetails) {
+        car.setAvailable(false);
+        car.setCarOrderDetails(carOrderDetails);
+    }
+
+    private CarOrderDetails createCarOrderDetails(OrderInfo orderInfo, Car car, CarOrder carOrder) {
+        return CarOrderDetails.builder()
+                .dateOfRental(orderInfo.getStartDate())
+                .dateOfReturn(orderInfo.getEndDate())
+                .car(car)
+                .carOrder(carOrder)
+                .build();
+    }
+
+    private CarOrder createCarOrder(Administration administration, Client client) {
+        return CarOrder.builder()
+                .stuff(administration)
+                .client(client)
+                .build();
     }
 
     @Override
@@ -82,7 +98,6 @@ public class CarOrderServiceImpl implements CarOrderService
     public void deleteOrderById(Long orderId) {
         Car car = getOrderDetailsById(orderId).getCar();
         car.setAvailable(true);
-        carService.persistCar(car);
         carOrderRepository.deleteById(orderId);
     }
 

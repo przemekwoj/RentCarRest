@@ -6,8 +6,7 @@ import com.przemo.rentcar.entities.users.Supervisor;
 
 import java.util.List;
 
-public interface AdministrationService
-{
+public interface AdministrationService {
     List<Administration> getAllAdministrations();
 
     List<Employee> getAllEmployees();
@@ -20,9 +19,9 @@ public interface AdministrationService
 
     Supervisor addSupervisor(Supervisor supervisor);
 
-    Employee updateEmployee(Employee employee,Long id);
+    Employee updateEmployee(Employee employee, Long id);
 
-    Supervisor updateSupervisor(Supervisor supervisor,Long id);
+    Supervisor updateSupervisor(Supervisor supervisor, Long id);
 
     void deleteAdministrator(Long id);
 

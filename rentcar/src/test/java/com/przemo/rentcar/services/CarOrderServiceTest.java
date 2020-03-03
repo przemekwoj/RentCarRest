@@ -119,7 +119,6 @@ public class CarOrderServiceTest {
             Client client = new Client();
             Car car = new Car();
             CarOrderDetails carOrderDetails = new CarOrderDetails();
-            when(carService.persistCar(car)).thenReturn(car);
             when(carOrderDetailsRepository.save(any())).thenReturn(carOrderDetails);
             when(administrationService.getAdministrationByEmail(orderInfo.getEmployeeMail())).thenReturn(administration);
             when(clientService.getOneClient(orderInfo.getClientId())).thenReturn(client);
@@ -140,7 +139,6 @@ public class CarOrderServiceTest {
             CarOrderDetails carOrderDetails = new CarOrderDetails();
             carOrderDetails.setCar(car);
             when(carOrderDetailsRepository.findById(orderId)).thenReturn(Optional.of(carOrderDetails));
-            when(carService.persistCar(car)).thenReturn(car);
             //when
             carOrderService.deleteOrderById(orderId);
             //then

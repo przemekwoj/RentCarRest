@@ -2,9 +2,7 @@ package com.przemo.rentcar.entities.orders;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.przemo.rentcar.entities.cars.Car;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +10,9 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CarOrderDetails
 {
     @Id

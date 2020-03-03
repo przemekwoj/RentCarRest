@@ -33,7 +33,7 @@ INSERT INTO CARORDER VALUES(1,2,2);
 
 INSERT INTO CAR_ORDER_DETAILS VALUES(1,'2011-03-12','2020-03-12',false,200,1);
 
-UPDATE hibernate_sequence SET next_val=2;
+UPDATE hibernate_sequence SET next_val=50;
 
 
 

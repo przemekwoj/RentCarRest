@@ -4,11 +4,10 @@ import com.przemo.rentcar.entities.cars.Brand;
 
 import java.util.List;
 
-public interface BrandService
-{
+public interface BrandService {
     List<Brand> getAllBrands();
 
-    List<Brand> getAllBrandsWithCars();
+    List<Brand> getAllBrandsWithCarsAndDetails();
 
     Brand getBrandById(Long id);
 
@@ -17,7 +16,5 @@ public interface BrandService
     void deleteBrandById(Long id);
 
     Brand updateBrand(Brand updatedBrand);
-
-    void addCarToBrand(long brandId,String plateNumber);
 
 }

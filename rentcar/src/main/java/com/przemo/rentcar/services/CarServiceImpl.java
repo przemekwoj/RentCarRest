@@ -12,66 +12,76 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CarServiceImpl implements CarService
-{
-    @Autowired
-    private CarRepository carRepository;
+public class CarServiceImpl implements CarService {
+
+    private final CarRepository carRepository;
+
+    private final BrandService brandService;
+
+    private final CarDetailsRepository carDetailsRepository;
 
     @Autowired
-    private BrandService brandService;
-
-    @Autowired
-    private CarDetailsRepository carDetailsRepository;
+    public CarServiceImpl(CarRepository carRepository, BrandService brandService, CarDetailsRepository carDetailsRepository) {
+        this.carRepository = carRepository;
+        this.brandService = brandService;
+        this.carDetailsRepository = carDetailsRepository;
+    }
 
     @Override
-    public List<Car> getAllCars()
-    {
+    public List<Car> getAllCars() {
         return carRepository.getAllCars();
     }
 
     @Override
     public Car findByPlateNumber(String plateNumber) {
         return carRepository.findByPlateNumber(plateNumber)
-                .orElseThrow(() -> new NotFoundEntity("Not found car with plate number "+plateNumber));
+                .orElseThrow(() -> new NotFoundEntity("Not found car with plate number " + plateNumber));
     }
 
     @Override
     public Car getCarByIdLazy(Long Id) {
         return carRepository.getCarByIdLazy(Id)
-                .orElseThrow(() -> new NotFoundEntity("Not found car with id "+Id));
+                .orElseThrow(() -> new NotFoundEntity("Not found car with id " + Id));
     }
 
     @Override
     public Car persistCar(Car car) {
-        return  carRepository.save(car);
+        return carRepository.save(car);
     }
 
     @Override
     public List<Car> getAvailableCars() {
-         return carRepository.findByAvailableTrue();
+        return carRepository.findByAvailableTrue();
     }
+
 
     @Override
     public Car addNewCarWithBrand(Car car, long brandId) {
-        Brand brand = brandService.getBrandById(brandId);
-        CarDetails carDetails = new CarDetails();
-        carDetails.setCar(car);
-        brand.addCar(car);
-        carDetailsRepository.save(carDetails);
-        brandService.persistBrand(brand);
+        saveCar(car);
+        addCarToBrand(car, brandId);
         return car;
     }
 
-    @Override
-    public void saveCarWithCarDetails(Car car, CarDetails carDetails)
-    {
+    private void addCarToBrand(Car car, long brandId) {
+        Brand brand = brandService.getBrandById(brandId);
+        brand.addCar(car);
+        brandService.persistBrand(brand);
+    }
+
+    private void saveCar(Car car) {
+        CarDetails carDetails = new CarDetails();
         carDetails.setCar(car);
         carDetailsRepository.save(carDetails);
     }
 
     @Override
-    public CarDetails updateCarDetail(CarDetails carDetails, Long carId)
-    {
+    public void saveCarWithCarDetails(Car car, CarDetails carDetails) {
+        carDetails.setCar(car);
+        carDetailsRepository.save(carDetails);
+    }
+
+    @Override
+    public CarDetails updateCarDetail(CarDetails carDetails, Long carId) {
         Car car = carRepository.getCarByIdLazy(carId).get();
 
         carDetails.setCarDetails_id(carId);
@@ -91,8 +101,8 @@ public class CarServiceImpl implements CarService
     }
 
     @Override
-    public void deleteCarById(Long carId)
-    {
+    public void deleteCarById(Long carId) {
         carRepository.deleteById(carId);
     }
+
 }

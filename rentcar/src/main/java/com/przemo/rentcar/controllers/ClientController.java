@@ -1,7 +1,7 @@
 package com.przemo.rentcar.controllers;
 
-import com.przemo.rentcar.services.ClientService;
 import com.przemo.rentcar.entities.users.Client;
+import com.przemo.rentcar.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

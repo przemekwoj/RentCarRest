@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ClientServiceImpl implements ClientService
-{
-    @Autowired
-    private ClientRepository clientRepository;
+public class ClientServiceImpl implements ClientService {
+    private final ClientRepository clientRepository;
 
+    @Autowired
+    public ClientServiceImpl(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
 
     @Override
     public Client addClient(Client client) {
@@ -25,7 +27,7 @@ public class ClientServiceImpl implements ClientService
     }
 
     @Override
-    public Client updateClient(Client client,Long clientId) {
+    public Client updateClient(Client client, Long clientId) {
         client.setUser_id(clientId);
         return clientRepository.save(client);
     }

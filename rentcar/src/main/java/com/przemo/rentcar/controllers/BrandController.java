@@ -41,9 +41,9 @@ public class BrandController
         return modelMapper.map(brand,BrandDTO.class);}
 
     @GetMapping("/withCars")
-    public List<Brand> getAllBrandsWithCars()
+    public List<Brand> getAllBrandsWithCarsAndDetails()
     {
-        return brandService.getAllBrandsWithCars();
+        return brandService.getAllBrandsWithCarsAndDetails();
     }
 
     @PostMapping("/brand")
@@ -62,11 +62,5 @@ public class BrandController
     public Brand updateBrand(@Validated @RequestBody Brand updatedBrand)
     {
         return brandService.updateBrand(updatedBrand);
-    }
-
-    @PatchMapping("/brandId/{brandId}/plateNumber/{plateNumber}")
-    public void addCarToBrand(@PathVariable long brandId,@PathVariable String plateNumber)
-    {
-        brandService.addCarToBrand(brandId,plateNumber);
     }
 }

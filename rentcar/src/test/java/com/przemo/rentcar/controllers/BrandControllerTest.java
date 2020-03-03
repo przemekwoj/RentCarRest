@@ -82,8 +82,8 @@ public class BrandControllerTest {
         @DisplayName("should return Brands with cars")
         void testShouldReturnBrandsWithCars(){
             brandController = new BrandController(brandService,modelMapper);
-            when(brandService.getAllBrandsWithCars()).thenReturn(brands);
-            List<Brand> actual = brandController.getAllBrandsWithCars();
+            when(brandService.getAllBrandsWithCarsAndDetails()).thenReturn(brands);
+            List<Brand> actual = brandController.getAllBrandsWithCarsAndDetails();
             assertArrayEquals(brands.toArray(),actual.toArray());
         }
     }

@@ -1,8 +1,7 @@
 package com.przemo.rentcar.integrationTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.przemo.rentcar.entities.orders.OrderInfo;
-import com.przemo.rentcar.services.CarOrderService;
+import com.przemo.rentcar.entities.cars.Brand;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,10 +13,9 @@ import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import java.util.Date;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
@@ -26,38 +24,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:beforeTest.sql"),
         @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:afterTest.sql")
 })
-public class OrderControllerIntegrationTest {
-
-    @Autowired
-    private CarOrderService carOrderService;
+public class BrandControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private ObjectMapper mapper;
 
     @Test
-    @WithMockUser(roles={"Administration"})
-    void shoudlAddNewOrderInfo() throws Exception {
-        //given
-        OrderInfo orderInfo = new OrderInfo();
-        orderInfo.setCarId(2L);
-        orderInfo.setClientId(2L);
-        orderInfo.setEmployeeMail("jan@wp.pl");
-        orderInfo.setEndDate(new Date());
-        orderInfo.setStartDate(new Date());
-        //when
-        MvcResult result = mockMvc.perform(post("/order/createNewOrder")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(orderInfo))
+    @WithMockUser(roles = {"Administration"})
+    public void shouldReturnBrandsWithCarsAndCarsDetails() throws Exception {
+        //given-when
+        MvcResult result = mockMvc.perform(get("/brand/withCars")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
         //then
-        int amountOfOrders = carOrderService.getOrdersInfo().size();
-
-        assertEquals(2,amountOfOrders);
+        Brand[] actual = mapper.readValue(result.getResponse().getContentAsString(), Brand[].class);
+        assertAll(
+                () -> assertNotNull(actual[0].getCars()),
+                () -> assertNotNull(actual[0].getCars().iterator().next().getCarDetails())
+                );
     }
-
 }

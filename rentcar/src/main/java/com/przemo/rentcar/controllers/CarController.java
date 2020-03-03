@@ -32,15 +32,14 @@ public class CarController
     @GetMapping("/cars")
     public List<CarDTO> getAllCars()
     {
-        List<CarDTO> carsDTO = modelMapper.map(carService.getAllCars(), new TypeToken<List<CarDTO>>(){}.getType());
-        return carsDTO;
+        List<Car> cars = carService.getAllCars();
+        return modelMapper.map(cars, new TypeToken<List<CarDTO>>(){}.getType());
     }
 
     @GetMapping("/AvailableCars")
     public List<CarDTO> getAvailableCars()
     {
-        List<CarDTO> carsDTO = modelMapper.map(carService.getAvailableCars(), new TypeToken<List<CarDTO>>(){}.getType());
-        return carsDTO;
+        return modelMapper.map(carService.getAvailableCars(), new TypeToken<List<CarDTO>>(){}.getType());
     }
 
     @GetMapping("/{carId}")
@@ -85,7 +84,7 @@ public class CarController
     @PutMapping("carDetail/{carId}")
     public CarDetails updateCarDetail(@RequestBody CarDetails carDetails,@PathVariable Long carId)
     {
-        carService.updateCarDetail(carDetails,carId);
-        return carDetails;
+        return carService.updateCarDetail(carDetails,carId);
     }
+
 }

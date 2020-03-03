@@ -1,7 +1,6 @@
 package com.przemo.rentcar.services;
 
 import com.przemo.rentcar.entities.cars.Brand;
-import com.przemo.rentcar.entities.cars.Car;
 import com.przemo.rentcar.exceptions.particularErrors.NotFoundEntity;
 import com.przemo.rentcar.repositoriesDB.BrandRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,39 +25,6 @@ public class BrandServiceTest {
 
     @Mock
     private BrandRepository brandRepository;
-
-    @Mock
-    private CarService carService;
-
-
-    @Nested
-    @DisplayName("Modyfied methods")
-    class ModyfiedMethods{
-
-        @Test
-        @DisplayName("should add Car to Brand")
-        void shouldAddCarToBrand(){
-            //given
-            Brand brand = new Brand();
-            brand.setBrand_id(1L);
-            Car car = new Car();
-            car.setPlateNumber("997");
-            when(brandRepository.findById(1L)).thenReturn(Optional.of(brand));
-            when(carService.findByPlateNumber("997")).thenReturn(car);
-            //when
-            brandService.addCarToBrand(1L,"997");
-            //then
-            assertTrue(brand.getCars().contains(car),"should contain added car");
-
-        }
-
-        @Test
-        @DisplayName("should throw Not Found Exception by email")
-        void shouldThrowNowFoundExceptionByEmail(){
-            when(brandRepository.findById(1L)).thenThrow( new NotFoundEntity("Not found"));
-            assertThrows(NotFoundEntity.class, () -> brandService.addCarToBrand(1L,"997"));
-        }
-    }
 
     @Nested
     @DisplayName("Get methods test" )

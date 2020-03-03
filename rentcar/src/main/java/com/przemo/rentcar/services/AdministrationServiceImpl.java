@@ -13,16 +13,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdministrationServiceImpl implements AdministrationService
-{
-    @Autowired
-    private EmployeeRepository employeeRepository;
+public class AdministrationServiceImpl implements AdministrationService {
+    private final EmployeeRepository employeeRepository;
+
+    private final SupervisorRepository supervisorRepository;
+
+    private final AdministrationRepository administrationRepository;
 
     @Autowired
-    private SupervisorRepository supervisorRepository;
-
-    @Autowired
-    private AdministrationRepository administrationRepository;
+    public AdministrationServiceImpl(EmployeeRepository employeeRepository, SupervisorRepository supervisorRepository, AdministrationRepository administrationRepository) {
+        this.employeeRepository = employeeRepository;
+        this.supervisorRepository = supervisorRepository;
+        this.administrationRepository = administrationRepository;
+    }
 
     @Override
     public List<Employee> getAllEmployees() {
@@ -32,13 +35,13 @@ public class AdministrationServiceImpl implements AdministrationService
     @Override
     public Administration getAdministrationByEmail(String email) {
         return administrationRepository.getAdministrationByEmail(email)
-                .orElseThrow(() -> new NotFoundEntity("Not found administration with email "+email));
+                .orElseThrow(() -> new NotFoundEntity("Not found administration with email " + email));
     }
 
     @Override
     public Administration findByEmail(String email) {
         return administrationRepository.findByEmail(email)
-                .orElseThrow(() -> new NotFoundEntity("Not found administration with email "+email));
+                .orElseThrow(() -> new NotFoundEntity("Not found administration with email " + email));
     }
 
     @Override
@@ -54,7 +57,7 @@ public class AdministrationServiceImpl implements AdministrationService
     @Override
     public Administration getAdministrationById(Long id) {
         return administrationRepository.findById(id)
-                .orElseThrow(() -> new NotFoundEntity("Not found administration with id "+id));
+                .orElseThrow(() -> new NotFoundEntity("Not found administration with id " + id));
     }
 
     @Override

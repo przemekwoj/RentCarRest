@@ -31,7 +31,9 @@ public class QuartzConfiguration {
     public CronTriggerFactoryBean trigger(JobDetail job) {
         CronTriggerFactoryBean trigger = new CronTriggerFactoryBean();
         trigger.setJobDetail(job);
-        trigger.setCronExpression(" 0 30 9,16 ? * * *");
+//        trigger.setCronExpression(" 0 30 9,16 ? * * *");
+        trigger.setCronExpression(" 0,15,30,45 0-59 * ? * * *");
+
         return trigger;
     }
 

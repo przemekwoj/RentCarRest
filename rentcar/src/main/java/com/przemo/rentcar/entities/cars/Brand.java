@@ -11,10 +11,9 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-public class Brand
-{
+public class Brand {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long brand_id;
 
     @Column(unique = true)
@@ -25,20 +24,19 @@ public class Brand
 
     private int amountOfAvailableCars;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     private Set<Car> cars = new HashSet<>();
 
 
-    public Brand(@NotNull String brandName, int amountOfCars, int amountOfAvailableCars,Long brand_id) {
+    public Brand(@NotNull String brandName, int amountOfCars, int amountOfAvailableCars, Long brand_id) {
         this.brandName = brandName;
         this.amountOfCars = amountOfCars;
         this.amountOfAvailableCars = amountOfAvailableCars;
         this.brand_id = brand_id;
     }
 
-    public void addCar(Car car)
-    {
+    public void addCar(Car car) {
         cars.add(car);
         amountOfAvailableCars++;
         amountOfCars++;
