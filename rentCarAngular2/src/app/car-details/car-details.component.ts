@@ -23,13 +23,13 @@ export class CarDetailsComponent implements OnInit {
   newCarDetails = new FormGroup({
     color: new FormControl(),
     weight: new FormControl(),
-    hight: new FormControl(),
+    high: new FormControl(),
   });
 
   constructor(private route: ActivatedRoute, private carRepository: CarRepository) {
     this.newCarDetails.controls.color.disable();
     this.newCarDetails.controls.weight.disable();
-    this.newCarDetails.controls.hight.disable();
+    this.newCarDetails.controls.high.disable();
   }
 
   ngOnInit() {
@@ -40,19 +40,19 @@ export class CarDetailsComponent implements OnInit {
       console.log(this.carDetails);
       this.newCarDetails.setValue({color: this.carDetails.color,
                                   weight: this.carDetails.weight,
-                                  hight : this.carDetails.hight});
+                                  high : this.carDetails.high});
     });
   }
 
   createNewCarDetails() {
     this.carDetails.color = this.newCarDetails.value.color;
-    this.carDetails.hight = this.newCarDetails.value.hight;
+    this.carDetails.high = this.newCarDetails.value.high;
     this.carDetails.weight = this.newCarDetails.value.weight;
     console.log(this.carDetails);
     this.carRepository.putCarDetails(this.carDetails, this.carId).subscribe(cd => { console.log(cd); });
     this.newCarDetails.controls.color.disable();
     this.newCarDetails.controls.weight.disable();
-    this.newCarDetails.controls.hight.disable();
+    this.newCarDetails.controls.high.disable();
     this.ishidden = false;
 
 

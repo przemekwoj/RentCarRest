@@ -45,3 +45,11 @@ input.ng-invalid.ng-touched:not(:focus) {
   .inputFormElement {
       height: 50px;
   }
+
+  #showEmailError{
+    float: right;
+  }
+
+  #showPasswordError{
+    float: right;
+  }

@@ -2,8 +2,8 @@ package com.przemo.rentcar.services;
 
 import com.przemo.rentcar.entities.orders.CarOrder;
 import com.przemo.rentcar.entities.orders.CarOrderDetails;
-import com.przemo.rentcar.entities.orders.OrderInfo;
-import com.przemo.rentcar.entities.orders.OrderInfoDTO;
+import com.przemo.rentcar.models.OrderInfo;
+import com.przemo.rentcar.models.OrderInfoDTO;
 
 import java.util.List;
 

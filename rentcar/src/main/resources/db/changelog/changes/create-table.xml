@@ -69,7 +69,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="color" type="VARCHAR(255)"/>
-            <column name="hight" type="INT">
+            <column name="high" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="weight" type="INT">

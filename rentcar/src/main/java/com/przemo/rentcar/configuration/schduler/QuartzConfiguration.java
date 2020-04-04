@@ -1,6 +1,6 @@
 package com.przemo.rentcar.configuration.schduler;
 
-import com.przemo.rentcar.entities.orders.OrderScheduler;
+import com.przemo.rentcar.services.OrderSchedulerService;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class QuartzConfiguration {
     @Bean
     public JobDetailFactoryBean jobDetail() {
         JobDetailFactoryBean jobDetailFactory = new JobDetailFactoryBean();
-        jobDetailFactory.setJobClass(OrderScheduler.class);
+        jobDetailFactory.setJobClass(OrderSchedulerService.class);
         jobDetailFactory.setDescription("Invoke Sample Job service...");
         jobDetailFactory.setDurability(true);
         return jobDetailFactory;

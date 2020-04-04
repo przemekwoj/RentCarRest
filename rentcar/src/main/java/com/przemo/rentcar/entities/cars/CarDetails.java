@@ -27,7 +27,7 @@ public class CarDetails
 
     private int weight;
 
-    private int hight;
+    private int high;
 
 
 

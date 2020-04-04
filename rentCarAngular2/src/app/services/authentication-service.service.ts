@@ -24,6 +24,9 @@ export class AuthenticationServiceService {
     return this.http.get('http://localhost:8080/basicauth',{headers});
   }
 
+  getEmail(){
+    return this.email;
+  }
   changeAuth(isAuth: boolean) {
     this.isAuthenticatedSource.next(isAuth);
   }

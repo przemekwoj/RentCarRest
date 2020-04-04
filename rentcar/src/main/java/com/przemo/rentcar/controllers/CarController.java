@@ -1,9 +1,9 @@
 package com.przemo.rentcar.controllers;
 
+import com.przemo.rentcar.dto.carsDto.CarDto;
 import com.przemo.rentcar.entities.cars.Car;
-import com.przemo.rentcar.entities.cars.CarDTO;
 import com.przemo.rentcar.entities.cars.CarDetails;
-import com.przemo.rentcar.entities.cars.CarDetailsDTO;
+import com.przemo.rentcar.dto.carsDto.CarDetailsDto;
 import com.przemo.rentcar.services.CarService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -30,30 +30,30 @@ public class CarController
     }
 
     @GetMapping("/cars")
-    public List<CarDTO> getAllCars()
+    public List<CarDto> getAllCars()
     {
         List<Car> cars = carService.getAllCars();
-        return modelMapper.map(cars, new TypeToken<List<CarDTO>>(){}.getType());
+        return modelMapper.map(cars, new TypeToken<List<CarDto>>(){}.getType());
     }
 
     @GetMapping("/AvailableCars")
-    public List<CarDTO> getAvailableCars()
+    public List<CarDto> getAvailableCars()
     {
-        return modelMapper.map(carService.getAvailableCars(), new TypeToken<List<CarDTO>>(){}.getType());
+        return modelMapper.map(carService.getAvailableCars(), new TypeToken<List<CarDto>>(){}.getType());
     }
 
     @GetMapping("/{carId}")
-    public CarDTO getCarById(@PathVariable Long carId)
+    public CarDto getCarById(@PathVariable Long carId)
     {
         Car car = carService.getCarByIdLazy(carId);
-        return modelMapper.map(car,CarDTO.class);
+        return modelMapper.map(car, CarDto.class);
     }
 
     @GetMapping("/carDetail/{carId}")
-    public CarDetailsDTO getCarDetailById(@PathVariable Long carId)
+    public CarDetailsDto getCarDetailById(@PathVariable Long carId)
     {
         CarDetails carDetails = carService.getCarDetailById(carId);
-        return modelMapper.map(carDetails,CarDetailsDTO.class);
+        return modelMapper.map(carDetails, CarDetailsDto.class);
     }
 
     @PostMapping("/carWithBrand/{brandId}")

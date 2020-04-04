@@ -1,7 +1,7 @@
 package com.przemo.rentcar.controllers;
 
+import com.przemo.rentcar.dto.carsDto.BrandDto;
 import com.przemo.rentcar.entities.cars.Brand;
-import com.przemo.rentcar.entities.cars.BrandDTO;
 import com.przemo.rentcar.entities.cars.Car;
 import com.przemo.rentcar.services.BrandService;
 import org.junit.jupiter.api.BeforeAll;
@@ -55,20 +55,20 @@ public class BrandControllerTest {
     class GetMethods {
 
         @Test
-        @DisplayName("should return whole list of BrandDTO")
+        @DisplayName("should return whole list of BrandDto")
         void testFindAdministrations() {
             brandController = new BrandController(brandService,modelMapper);
             when(brandService.getAllBrands()).thenReturn(brands);
-            List<BrandDTO> result = brandController.getAllBrands();
+            List<BrandDto> result = brandController.getAllBrands();
             assertEquals(brands.size(),result.size());
         }
 
         @Test
-        @DisplayName("should return BrandDTO by Id")
+        @DisplayName("should return BrandDto by Id")
         void testShouldReturnBrandDTOById(){
             brandController = new BrandController(brandService,modelMapper);
             when(brandService.getBrandById(1L)).thenReturn(brand1);
-            BrandDTO actual = brandController.getBrandById(1L);
+            BrandDto actual = brandController.getBrandById(1L);
             assertAll("check all fields",
                     ()->assertEquals(brand1.getAmountOfAvailableCars(),actual.getAmountOfAvailableCars()),
                     ()->assertEquals(brand1.getAmountOfCars(),actual.getAmountOfCars()),

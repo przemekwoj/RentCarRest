@@ -19,10 +19,9 @@ import javax.validation.constraints.Size;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public abstract class  User
-{
+public abstract class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long user_id;
     @NotNull(message = "firstName must not be null")
     @Size(min = 1, max = 30, message = "firstName must be between 1 and 30 characters")
@@ -36,7 +35,6 @@ public abstract class  User
     @NotNull(message = "password must not be null")
     private String password;
     private String phone;
-
 
     public User(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;

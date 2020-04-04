@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule , routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ManageComponent } from './manage/manage.component';
@@ -18,7 +17,8 @@ import { OrderComponent } from './order/order.component';
 import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { InterceptorGlobalErrorHandlerService } from './services/interceptor-global-error-handler.service';
 import {MatIconModule} from '@angular/material/icon';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatToolbarModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { EmailComponent } from './email/email.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,15 +33,20 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
     AddClientComponent,
     OrderComponent,
     AllOrdersComponent,
+    EmailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
     {

@@ -47,6 +47,10 @@ export class AppComponent implements OnInit {
 
   allOrders() {
     this.router.navigateByUrl('manage/allOrders');
-
   }
+
+  email(){
+    this.router.navigateByUrl('manage/email');
+  }
+
 }

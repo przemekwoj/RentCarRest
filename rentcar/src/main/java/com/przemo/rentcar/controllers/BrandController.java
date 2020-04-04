@@ -1,7 +1,7 @@
 package com.przemo.rentcar.controllers;
 
+import com.przemo.rentcar.dto.carsDto.BrandDto;
 import com.przemo.rentcar.entities.cars.Brand;
-import com.przemo.rentcar.entities.cars.BrandDTO;
 import com.przemo.rentcar.services.BrandService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -29,16 +29,16 @@ public class BrandController
     }
 
     @GetMapping("/brands")
-    public List<BrandDTO> getAllBrands()
+    public List<BrandDto> getAllBrands()
     {
         List<Brand> brands = brandService.getAllBrands();
-        return  modelMapper.map(brands, new TypeToken<List<BrandDTO>>(){}.getType());
+        return  modelMapper.map(brands, new TypeToken<List<BrandDto>>(){}.getType());
     }
 
     @GetMapping("/{brandId}")
-    public BrandDTO getBrandById(@PathVariable Long brandId) {
+    public BrandDto getBrandById(@PathVariable Long brandId) {
         Brand brand = brandService.getBrandById(brandId);
-        return modelMapper.map(brand,BrandDTO.class);}
+        return modelMapper.map(brand, BrandDto.class);}
 
     @GetMapping("/withCars")
     public List<Brand> getAllBrandsWithCarsAndDetails()

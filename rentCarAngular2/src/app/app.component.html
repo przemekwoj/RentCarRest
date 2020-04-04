@@ -1,6 +1,5 @@
 isAuthenticated : {{isAuthenticated}}
 <br>
-
 <div [hidden]="isAuthenticated">
     <app-login></app-login>
 </div>
@@ -12,6 +11,7 @@ isAuthenticated : {{isAuthenticated}}
     <button (click)="addClient()">addClinet</button>
     <button (click)="addOrder()">addOrder</button>
     <button (click)="allOrders()">allOrders</button>
+    <button (click)="email()">email</button>
     <app-logout></app-logout>
     <router-outlet></router-outlet>
 </div>

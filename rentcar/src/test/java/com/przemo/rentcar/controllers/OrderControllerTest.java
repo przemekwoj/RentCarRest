@@ -3,7 +3,7 @@ package com.przemo.rentcar.controllers;
 import com.przemo.rentcar.entities.cars.Car;
 import com.przemo.rentcar.entities.orders.CarOrder;
 import com.przemo.rentcar.entities.orders.CarOrderDetails;
-import com.przemo.rentcar.entities.orders.OrderInfo;
+import com.przemo.rentcar.models.OrderInfo;
 import com.przemo.rentcar.entities.users.Administration;
 import com.przemo.rentcar.entities.users.Client;
 import com.przemo.rentcar.services.CarOrderService;

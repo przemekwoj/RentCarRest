@@ -1,7 +1,7 @@
 package com.przemo.rentcar.integrationTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.przemo.rentcar.entities.orders.OrderInfo;
+import com.przemo.rentcar.models.OrderInfo;
 import com.przemo.rentcar.repositoriesDB.CarOrderDetailsRepository;
 import com.przemo.rentcar.repositoriesDB.CarOrderRepository;
 import com.przemo.rentcar.services.CarOrderService;

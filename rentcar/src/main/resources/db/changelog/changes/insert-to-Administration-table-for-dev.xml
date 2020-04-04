@@ -10,7 +10,7 @@
                 tableName="administration">
             <column name="role" value="Administration" type="VARCHAR(31)"/>
             <column name="user_id" value="1" type="BIGINT(20)"/>
-            <column name="email" value="a@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="przemoemo1234@gmail.com" type="VARCHAR(255)"/>
             <column name="first_name" value="a" type="VARCHAR(30)"/>
             <column name="last_name" value="a" type="VARCHAR(30)"/>
             <column name="password" value="$2a$10$YF7k2.QSu9QAmi.8jVzqNelXYsALbCUK54J/WAS/wmwOZvpT5Rb7C" type="VARCHAR(255)"/>
@@ -23,7 +23,7 @@
                 tableName="administration">
             <column name="role" value="Administration" type="VARCHAR(31)"/>
             <column name="user_id" value="2" type="BIGINT(20)"/>
-            <column name="email" value="b@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="aksdkj@op.pl" type="VARCHAR(255)"/>
             <column name="first_name" value="b" type="VARCHAR(30)"/>
             <column name="last_name" value="b" type="VARCHAR(30)"/>
             <column name="password" value="$2a$10$YCNghM.zpocU6L5b1gvumuXSG732lQsR4sLmsf6premaJ2j9YgD3." type="VARCHAR(255)"/>
@@ -49,7 +49,7 @@
                 tableName="administration">
             <column name="role" value="Supervisor" type="VARCHAR(31)"/>
             <column name="user_id" value="4" type="BIGINT(20)"/>
-            <column name="email" value="k@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="jashd@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="k" type="VARCHAR(30)"/>
             <column name="last_name" value="k" type="VARCHAR(30)"/>
             <column name="password" value="$2a$10$yhRNrkvkmWqFRNIQRl72c.eZvzzFzqV2UoG3Ol7xWKGCZrXKNptoi" type="VARCHAR(255)"/>
@@ -62,7 +62,7 @@
                 tableName="administration">
             <column name="role" value="Employee" type="VARCHAR(31)"/>
             <column name="user_id" value="5" type="BIGINT(20)"/>
-            <column name="email" value="e@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="zz@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="e" type="VARCHAR(30)"/>
             <column name="last_name" value="e" type="VARCHAR(30)"/>
             <column name="password" value="$2a$10$.2KAw6NY7KOft5us0YvVNO0KDSi79oPyDlkGjgAfYrS2b3s02NNpC" type="VARCHAR(255)"/>
@@ -75,7 +75,7 @@
                 tableName="administration">
             <column name="role" value="Employee" type="VARCHAR(31)"/>
             <column name="user_id" value="6" type="BIGINT(20)"/>
-            <column name="email" value="f@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="zzz@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="f" type="VARCHAR(30)"/>
             <column name="last_name" value="f" type="VARCHAR(30)"/>
             <column name="password" value="$2a$10$CTbFHKRAGLCw7OsimXYH7..HCypKarCFsz78bku6QRPOjlZrpZlby" type="VARCHAR(255)"/>

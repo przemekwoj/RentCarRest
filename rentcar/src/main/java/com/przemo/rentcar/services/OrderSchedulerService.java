@@ -1,13 +1,12 @@
-package com.przemo.rentcar.entities.orders;
+package com.przemo.rentcar.services;
 
-import com.przemo.rentcar.services.CarOrderService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class OrderScheduler implements Job {
+@Service
+public class OrderSchedulerService implements Job {
 
     @Autowired
     private CarOrderService carOrderService;

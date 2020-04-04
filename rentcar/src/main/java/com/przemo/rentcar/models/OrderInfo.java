@@ -1,4 +1,4 @@
-package com.przemo.rentcar.entities.orders;
+package com.przemo.rentcar.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

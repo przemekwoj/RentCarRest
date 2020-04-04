@@ -1,9 +1,9 @@
 package com.przemo.rentcar.controllers;
 
+import com.przemo.rentcar.dto.carsDto.CarDto;
 import com.przemo.rentcar.entities.cars.Car;
-import com.przemo.rentcar.entities.cars.CarDTO;
 import com.przemo.rentcar.entities.cars.CarDetails;
-import com.przemo.rentcar.entities.cars.CarDetailsDTO;
+import com.przemo.rentcar.dto.carsDto.CarDetailsDto;
 import com.przemo.rentcar.entities.orders.CarOrderDetails;
 import com.przemo.rentcar.services.CarService;
 import org.junit.jupiter.api.BeforeAll;
@@ -56,21 +56,21 @@ public class CarControllerTest {
     class GetMethods {
 
         @Test
-        @DisplayName("should return whole list of CarDTO")
+        @DisplayName("should return whole list of CarDto")
         void shouldReturnAllCars() {
             carController = new CarController(carService,modelMapper);
             when(carService.getAllCars()).thenReturn(cars);
-            List<CarDTO> result = carController.getAllCars();
+            List<CarDto> result = carController.getAllCars();
             assertEquals(cars.size(),result.size());
         }
 
         @Test
-        @DisplayName("should return whole list of CarDTO")
+        @DisplayName("should return whole list of CarDto")
         void shouldReturnCars()
         {
             carController = new CarController(carService,modelMapper);
             when(carService.getAvailableCars()).thenReturn(cars);
-            List<CarDTO> result = carController.getAvailableCars();
+            List<CarDto> result = carController.getAvailableCars();
             assertEquals(cars.size(),result.size());
         }
 
@@ -79,7 +79,7 @@ public class CarControllerTest {
         void shouldReturnCarWithParticularId(){
             carController = new CarController(carService,modelMapper);
             when(carService.getCarByIdLazy(1L)).thenReturn(car);
-            CarDTO actual = carController.getCarById(1L);
+            CarDto actual = carController.getCarById(1L);
             assertAll("check all fields",
                     ()->assertEquals(car.getCar_id(),actual.getCar_id()),
                     ()->assertEquals(car.getPlateNumber(),actual.getPlateNumber())
@@ -95,14 +95,14 @@ public class CarControllerTest {
             carDetails.setCar(new Car());
             carDetails.setCarDetails_id(1L);
             carDetails.setColor("yellow");
-            carDetails.setHight(123);
+            carDetails.setHigh(123);
             carDetails.setWeight(123);
             when(carService.getCarDetailById(1L)).thenReturn(carDetails);
-            CarDetailsDTO actual = carController.getCarDetailById(1L);
+            CarDetailsDto actual = carController.getCarDetailById(1L);
             assertAll("check all fields",
                     ()->assertEquals(carDetails.getCarDetails_id(),actual.getCarDetails_id()),
                     ()->assertEquals(carDetails.getColor(),actual.getColor()),
-                    ()->assertEquals(carDetails.getHight(),actual.getHight()),
+                    ()->assertEquals(carDetails.getHigh(),actual.getHigh()),
                     ()->assertEquals(carDetails.getWeight(),actual.getWeight())
             );
 

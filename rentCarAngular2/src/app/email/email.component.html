@@ -1,0 +1,28 @@
+<form [formGroup]="emailInfo" (ngSubmit)="sendEmail()">
+  <label>
+    reveivers:
+    <select formControlName="receivers">
+      <option *ngFor="let reveiver of keys(queueType)" [ngValue]="reveiver">
+        {{reveiver}}
+      </option>
+    </select>
+  </label>
+  <label>
+    subject:
+    <input type="text" formControlName="subject">
+  </label>
+  <br>
+ <label>
+    message:
+    <textarea type="text" formControlName="message" rows="5" cols="60"></textarea>
+  </label>
+  <div class="form-group">
+    <label for="file">Choose File</label>
+    <input type="file" (change)="uploadFile($event)">
+  </div>
+  <li *ngFor="let attachment of attachments,let i = index">
+    {{attachment.fileName}}
+    <button type="button" (click)="removeAttachemnt(i)">RemoveAttachemnt</button>
+  </li>
+  <button type="submit">Submit</button>
+</form>

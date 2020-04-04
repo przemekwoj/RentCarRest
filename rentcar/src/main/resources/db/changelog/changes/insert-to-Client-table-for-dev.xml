@@ -9,7 +9,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="1" type="BIGINT(20)"/>
-            <column name="email" value="przemo@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="przemoemo@onet.pl" type="VARCHAR(255)"/>
             <column name="first_name" value="Przemek" type="VARCHAR(255)"/>
             <column name="last_name" value="Wojtcz" type="VARCHAR(255)"/>
             <column name="phone" value="567987456" type="VARCHAR(255)"/>
@@ -21,7 +21,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="2" type="BIGINT(20)"/>
-            <column name="email" value="client@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="przemoemo1234@gmail.com" type="VARCHAR(255)"/>
             <column name="first_name" value="client123" type="VARCHAR(255)"/>
             <column name="last_name" value="client123" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -33,7 +33,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="3" type="BIGINT(20)"/>
-            <column name="email" value="zz@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="zzzz@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="zz" type="VARCHAR(255)"/>
             <column name="last_name" value="zz" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -45,7 +45,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="4" type="BIGINT(20)"/>
-            <column name="email" value="xx@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="xx" type="VARCHAR(255)"/>
             <column name="last_name" value="xx" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -69,7 +69,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="6" type="BIGINT(20)"/>
-            <column name="email" value="nn@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xxx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="nn" type="VARCHAR(255)"/>
             <column name="last_name" value="n" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -81,7 +81,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="7" type="BIGINT(20)"/>
-            <column name="email" value="jj@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xxxx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="jj" type="VARCHAR(255)"/>
             <column name="last_name" value="jj" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -93,7 +93,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="8" type="BIGINT(20)"/>
-            <column name="email" value="dd@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xxxxx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="dd" type="VARCHAR(255)"/>
             <column name="last_name" value="dd" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -105,7 +105,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="9" type="BIGINT(20)"/>
-            <column name="email" value="gg@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xxxxxx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="gg" type="VARCHAR(255)"/>
             <column name="last_name" value="gg" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -129,7 +129,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="11" type="BIGINT(20)"/>
-            <column name="email" value="tt1@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xxxxxxx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="tt1" type="VARCHAR(255)"/>
             <column name="last_name" value="tt1" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -141,7 +141,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="12" type="BIGINT(20)"/>
-            <column name="email" value="gh@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xxxxxxxx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="gh" type="VARCHAR(255)"/>
             <column name="last_name" value="gh" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -153,7 +153,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="13" type="BIGINT(20)"/>
-            <column name="email" value="tzt@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="xxxxxxxxx@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="ztt" type="VARCHAR(255)"/>
             <column name="last_name" value="tzt" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -165,7 +165,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="14" type="BIGINT(20)"/>
-            <column name="email" value="ghj@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="p@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="ghj" type="VARCHAR(255)"/>
             <column name="last_name" value="ghj" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -177,7 +177,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="15" type="BIGINT(20)"/>
-            <column name="email" value="jkll@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="pp@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="jkll" type="VARCHAR(255)"/>
             <column name="last_name" value="jkll" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
@@ -189,7 +189,7 @@
         <insert schemaName="liquibasedev"
                 tableName="client">
             <column name="user_id" value="16" type="BIGINT(20)"/>
-            <column name="email" value="rty@wp.pl" type="VARCHAR(255)"/>
+            <column name="email" value="ppp@mailinator.com" type="VARCHAR(255)"/>
             <column name="first_name" value="rty" type="VARCHAR(255)"/>
             <column name="last_name" value="rty" type="VARCHAR(255)"/>
             <column name="phone" value="567947456" type="VARCHAR(255)"/>
