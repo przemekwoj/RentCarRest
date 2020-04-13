@@ -23,7 +23,7 @@ public class EmailController {
     }
 
     @PostMapping("/sendEmail")
-    Email sendEmail(@RequestBody Email email) throws JsonProcessingException {
+    public Email sendEmail(@RequestBody Email email) throws JsonProcessingException {
         emailService.pushEmailToRabbitQueue(email);
         return email;
     }

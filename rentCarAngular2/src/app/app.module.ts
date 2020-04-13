@@ -17,7 +17,7 @@ import { OrderComponent } from './order/order.component';
 import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { InterceptorGlobalErrorHandlerService } from './services/interceptor-global-error-handler.service';
 import {MatIconModule} from '@angular/material/icon';
-import { MatFormFieldModule, MatInputModule, MatToolbarModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatToolbarModule, MatButtonModule, MatCardModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { EmailComponent } from './email/email.component';
 @NgModule({
   declarations: [
@@ -46,7 +46,9 @@ import { EmailComponent } from './email/email.component';
     MatInputModule,
     MatToolbarModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [
     {

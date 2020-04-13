@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.przemo.rentcar.entities.orders.CarOrder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@ToString
 public class Client extends User
 {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "client",
@@ -23,4 +21,10 @@ public class Client extends User
     @Setter
     private Set<CarOrder> carOrders = new HashSet<>();
 
+    @Override
+    public String toString() {
+        return super.toString() + " ," +
+                "carOrders=" + carOrders +
+                '}';
+    }
 }

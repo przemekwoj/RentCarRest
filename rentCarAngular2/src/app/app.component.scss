@@ -1,0 +1,52 @@
+#login{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+#loginForm{
+    left: 50%;
+    bottom: 50%;
+}
+#mainDiv{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#logoutButton{
+    position: absolute;
+    right: 24px;
+}
+.topBar{
+    background-color : #0074D9;
+    color: white;
+    border-bottom: 2px solid #ff4081; 
+}
+
+#sideMenu{
+    background-color: #0074D9;
+    border-right: 2px solid #ff4081; 
+    float:left;
+    height: calc(100% - 64px);
+}
+
+
+#content{
+    display: inline;
+    background-color: yellowgreen;
+}
+
+.mat-button{
+    text-align: left;
+    margin: 20px;
+    color:white;
+    
+}
+
+.redicert{
+color: #ff4081;
+}

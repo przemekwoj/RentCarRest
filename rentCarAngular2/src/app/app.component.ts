@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
 
   title = 'rentCarAngular2';
   isAuthenticated: boolean;
+  selectedButton: string;
 
   constructor(private router: Router ,private authenticationService: AuthenticationServiceService) {
   }
@@ -24,32 +25,39 @@ export class AppComponent implements OnInit {
 
   getCars() {
     console.log('get');
+    this.selectedButton = 'getCars';
     this.router.navigateByUrl('manage/getCars');
   }
 
   postCar() {
     console.log('post');
+    this.selectedButton = 'postCar';
     this.router.navigateByUrl('manage/postCar');
   }
 
   createBrand() {
+    this.selectedButton = 'createBrand';
     this.router.navigateByUrl('manage/createBrand');
   }
 
   addClient() {
+    this.selectedButton = 'addClient';
     this.router.navigateByUrl('manage/addClinet');
   }
 
   addOrder() {
+    this.selectedButton = 'addOrder';
     this.router.navigateByUrl('manage/addOrder');
 
   }
 
   allOrders() {
+    this.selectedButton = 'allOrders';
     this.router.navigateByUrl('manage/allOrders');
   }
 
   email(){
+    this.selectedButton = 'email';
     this.router.navigateByUrl('manage/email');
   }
 

@@ -97,7 +97,7 @@ public class ClientControllerTest {
         @DisplayName("should update client")
         void shouldUpdateClient(){
             when(clientService.updateClient(client,1L)).thenReturn(client);
-            Client actual = clientController.addClient(client,1L);
+            Client actual = clientController.updateClient(client,1L);
             assertAll(
                     "fields inside update employee",
                     ()->assertEquals(client.getEmail(),actual.getEmail()),

@@ -77,11 +77,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         Gson gson = new Gson();
         ApiError apiError = new ApiError(HttpStatus.UNAUTHORIZED, LocalDateTime.now(),"Unauthorized user");
-        String employeeJsonString = gson.toJson(apiError);
+        String jsonString = gson.toJson(apiError);
         PrintWriter out = httpServletResponse.getWriter();
         httpServletResponse.setContentType("application/json");
         httpServletResponse.setCharacterEncoding("UTF-8");
-        out.print(employeeJsonString);
+        out.print(jsonString);
         out.flush();
     }
 }

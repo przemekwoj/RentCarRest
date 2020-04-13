@@ -1,11 +1,24 @@
 .mainDiv {
     display: flex;
     justify-content: center;
+    background-color : white;
+    height: 100%;
   }
 
+  #loginForm{
+    margin-top: 50px;
+    background-color : white;
+
+  }
+#fieldSet{
+  background-color: #0074D9;
+  color:white
+
+}
 #login {
    display: flex;
    justify-content: center;
+
 }
 
 #submitButton {
@@ -26,7 +39,7 @@
 
 fieldset {
     border-radius: 25px;
-    border: 2px solid #73AD21; 
+    border: 2px solid #ff4081; 
 }
 
 .help-block {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BasicAuthController {
 
     @GetMapping(path = "/basicauth")
-    public AuthInfo basicauth() {
+    public AuthInfo basicAuth() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         AuthInfo authInfo = AuthInfo.builder()
                 .email(authentication.getName())

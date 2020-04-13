@@ -36,19 +36,19 @@ public class AdministrationController
     }
 
     @GetMapping("/employees")
-    public List<Employee> getAllEmplyees()
+    public List<Employee> getAllEmployees()
     {
         return administrationService.getAllEmployees();
     }
 
-    @GetMapping("/getAdministationByMail/{email}")
-    public Administration getIdBYMail(@PathVariable String email)
+    @GetMapping("/getAdministrationByMail/{email}")
+    public Administration getIdByMail(@PathVariable String email)
     {
         return administrationService.getAdministrationByEmail(email);
     }
 
     @GetMapping("supervisor")
-    public List<Supervisor> getAllsupervisors()
+    public List<Supervisor> getAllSupervisors()
     {
         return administrationService.getAllSupervisors();
     }

@@ -25,7 +25,8 @@ public class UserPrincipale implements UserDetails
     }
 
     @Override
-    public String getPassword() {
+    public String getPassword()
+    {
         return administration.getPassword();
     }
 

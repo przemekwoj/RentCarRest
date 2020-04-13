@@ -12,7 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Arrays;
 import java.util.List;
@@ -88,7 +87,7 @@ public class AdministrationControllerTest {
         @DisplayName("should return whole list of employees")
         void testFindEmployees() {
             when(administrationService.getAllEmployees()).thenReturn(employees);
-            List<Employee> result = administrationController.getAllEmplyees();
+            List<Employee> result = administrationController.getAllEmployees();
             assertEquals(employees.size(),result.size());
         }
 
@@ -97,7 +96,7 @@ public class AdministrationControllerTest {
         void testGetByEmailShouldReturnAdministration()
         {
             when(administrationService.getAdministrationByEmail("email")).thenReturn(administration1);
-            Administration actual = administrationController.getIdBYMail("email");
+            Administration actual = administrationController.getIdByMail("email");
             assertEquals(administration1,actual);
         }
 
@@ -106,7 +105,7 @@ public class AdministrationControllerTest {
         void testGetByWrongEmailShouldNotReturnAdministration()
         {
             when(administrationService.getAdministrationByEmail("sss")).thenReturn(null);
-            Administration actual = administrationController.getIdBYMail("sss");
+            Administration actual = administrationController.getIdByMail("sss");
             assertEquals(null,actual);
         }
 
@@ -114,7 +113,7 @@ public class AdministrationControllerTest {
         @DisplayName("should return whole list of supervisors")
         void testFindSupervisors() {
             when(administrationService.getAllSupervisors()).thenReturn(supervisors);
-            List<Supervisor> result = administrationController.getAllsupervisors();
+            List<Supervisor> result = administrationController.getAllSupervisors();
             assertEquals(supervisors.size(),result.size());
         }
     }

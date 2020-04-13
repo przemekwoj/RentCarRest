@@ -1,9 +1,6 @@
 package com.przemo.rentcar.entities.users;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.GeneratedValue;
@@ -48,4 +45,14 @@ public abstract class User {
     }
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'';
+    }
 }

@@ -1,17 +1,56 @@
-isAuthenticated : {{isAuthenticated}}
 <br>
-<div [hidden]="isAuthenticated">
-    <app-login></app-login>
+<div [hidden]="isAuthenticated" id="login">
+    <app-login id="loginForm"></app-login>
 </div>
-<div [hidden]="!isAuthenticated">
-    <br>
-    <button (click)="getCars()">GET CARS</button>
-    <button (click)="postCar()">POST CAR</button>
-    <button (click)="createBrand()">Create Brand</button>
-    <button (click)="addClient()">addClinet</button>
-    <button (click)="addOrder()">addOrder</button>
-    <button (click)="allOrders()">allOrders</button>
-    <button (click)="email()">email</button>
-    <app-logout></app-logout>
-    <router-outlet></router-outlet>
+<div [hidden]="!isAuthenticated" id="mainDiv">
+    <mat-toolbar class="topBar">
+        <p>Rent Car Application</p>
+        <app-logout id="logoutButton"></app-logout>
+     </mat-toolbar>
+     <div id ="sideMenu">
+        <button mat-button (click)="getCars()" [ngClass]="selectedButton == 'getCars' ? 'redicert' : ''">
+            SHOW ALL CARS
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <br>
+        <button mat-button (click)="postCar()"  [ngClass]="selectedButton == 'postCar' ? 'redicert' : ''">
+            ADD NEW CAR
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <br>
+        <button mat-button (click)="createBrand()" [ngClass]="selectedButton == 'createBrand' ? 'redicert' : ''">
+            CREATE NEW BRAND
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <br>
+        <button mat-button (click)="addClient()" [ngClass]="selectedButton == 'addClient' ? 'redicert' : ''">
+            ADD NEW CLIENT
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <br>
+        <button mat-button (click)="addOrder()" [ngClass]="selectedButton == 'addOrder' ? 'redicert' : ''">
+            ORDER CAR
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <br>
+        <button mat-button (click)="allOrders()" [ngClass]="selectedButton == 'allOrders' ? 'redicert' : ''">
+            SHOW ALL ORDERS
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <br>
+        <button mat-button (click)="email()" [ngClass]="selectedButton == 'email' ? 'redicert' : ''">
+            SEND NOTIFICATION EMAIL
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+     </div>
+     <div id="content">
+        <router-outlet></router-outlet>
+     </div>  
 </div>

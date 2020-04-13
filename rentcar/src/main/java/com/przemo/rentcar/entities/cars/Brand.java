@@ -1,9 +1,6 @@
 package com.przemo.rentcar.entities.cars;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,6 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,6 +43,4 @@ public class Brand {
         amountOfAvailableCars++;
         amountOfCars++;
     }
-
-
 }

@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class BrandDto
 {
     private Long brand_id;

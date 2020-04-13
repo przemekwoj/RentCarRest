@@ -41,8 +41,8 @@ public class ClientController
         return clientService.addClient(client);
     }
 
-    @PostMapping("/{clientId}")
-    public  Client addClient(@RequestBody Client client,@RequestBody Long clientId)
+    @PutMapping("/{clientId}")
+    public  Client updateClient(@RequestBody @Valid Client client, @PathVariable Long clientId)
     {
         return clientService.updateClient(client,clientId);
     }
